@@ -1,0 +1,1106 @@
+/* /src/styles/ritual.css */
+/* SECTION: THE RITUAL (#ritual) & THE FULLSCREEN QUIZ OVERLAY */
+
+/* -------------------------------------------------------------
+   THE #ritual SECTION (Normal flow, tone sage, max-width 1200px)
+   ------------------------------------------------------------- */
+.ritual-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px var(--space-4);
+  box-sizing: border-box;
+  background-color: var(--ritual-tone-bg, var(--color-sage));
+  border-radius: 48px;
+  transition: background-color 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+  overflow: hidden;
+}
+
+/* Decorative Sun / Moon Blob in top-right corner */
+.ritual-celestial-blob {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  background-color: var(--color-clay);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, border-radius, background-color;
+}
+
+.ritual-section.pm-active .ritual-celestial-blob {
+  background-color: var(--color-bone);
+  opacity: 0.35;
+  transform: scale(0.9) rotate(45deg);
+}
+
+/* Section Header */
+.ritual-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.ritual-header-left {
+  max-width: 640px;
+}
+
+.ritual-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-2);
+}
+
+.ritual-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-deep-sage);
+}
+
+.ritual-custom-badge {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-clay);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.ritual-custom-badge.visible {
+  display: inline-flex;
+}
+
+.ritual-retake-btn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-moss);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.ritual-title {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 6vw, 6.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-moss);
+  letter-spacing: -0.03em;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.ritual-title-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-clay);
+  display: inline-block;
+}
+
+.ritual-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Morning / Evening Segmented Toggle */
+.ritual-toggle-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(247, 243, 234, 0.75);
+  border: 1px solid rgba(46, 59, 44, 0.14);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(46, 59, 44, 0.05);
+  user-select: none;
+}
+
+.ritual-toggle-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background-color: var(--color-moss);
+  border-radius: var(--radius-pill);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.ritual-toggle-btn {
+  position: relative;
+  z-index: 2;
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-moss);
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: color 0.3s ease;
+}
+
+.ritual-toggle-btn.active {
+  color: var(--color-paper);
+}
+
+/* Ticked Progress Header */
+.ritual-progress-tracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(247, 243, 234, 0.65);
+  border: 1px solid rgba(46, 59, 44, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 10px 24px;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 4;
+}
+
+.ritual-progress-text {
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-moss);
+}
+
+.ritual-progress-bar-wrap {
+  flex: 1;
+  max-width: 240px;
+  height: 6px;
+  background-color: rgba(46, 59, 44, 0.12);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin: 0 16px;
+}
+
+.ritual-progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-clay);
+  border-radius: var(--radius-pill);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Vertical Timeline Stage */
+.ritual-timeline-stage {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 0 20px 32px;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+/* Scrubbed Vertical Line */
+.ritual-timeline-svg {
+  position: absolute;
+  top: 40px;
+  left: 56px;
+  width: 16px;
+  height: calc(100% - 80px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.timeline-stem-path {
+  fill: none;
+  stroke: rgba(46, 59, 44, 0.25);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.timeline-stem-fill {
+  fill: none;
+  stroke: var(--color-clay);
+  stroke-width: 2.5;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  stroke-linecap: round;
+}
+
+.timeline-stem-bud {
+  fill: var(--color-clay);
+  transition: transform 0.1s linear;
+}
+
+/* Step Card Rows */
+.ritual-steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ritual-step-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 72px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--color-paper);
+  border: 1px solid rgba(46, 59, 44, 0.12);
+  border-radius: 32px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 28px -6px rgba(46, 59, 44, 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  will-change: transform;
+}
+
+.ritual-step-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(46, 59, 44, 0.25);
+}
+
+.ritual-step-row.is-completed {
+  border-color: var(--color-deep-sage);
+  background-color: rgba(247, 243, 234, 0.95);
+}
+
+/* Numbered Node Dot */
+.step-node-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--color-bone);
+  border: 1.5px solid var(--color-clay);
+  color: var(--color-moss);
+  font-family: var(--font-headline);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.step-thumb-wrap {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bone);
+  border-radius: 20px;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.step-thumb-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.step-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-product-name {
+  font-family: var(--font-headline);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-moss);
+}
+
+.step-wait-chip {
+  background-color: var(--color-bone);
+  color: var(--color-deep-sage);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.step-instruction {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-deep-sage);
+  line-height: 1.45;
+  max-width: 480px;
+}
+
+/* Interactive Tick Checkbox */
+.step-check-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(46, 59, 44, 0.25);
+  background-color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.step-check-btn:hover {
+  border-color: var(--color-moss);
+  transform: scale(1.08);
+}
+
+.step-check-svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-paper);
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.step-check-path {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.35s ease;
+}
+
+.ritual-step-row.is-completed .step-check-btn {
+  background-color: var(--color-moss);
+  border-color: var(--color-moss);
+}
+
+.ritual-step-row.is-completed .step-check-path {
+  stroke-dashoffset: 0;
+}
+
+/* -------------------------------------------------------------
+   PART A & C: THE FULLSCREEN QUIZ OVERLAY
+   ------------------------------------------------------------- */
+.verdant-quiz-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  background-color: var(--color-bone);
+  z-index: 10010;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.verdant-quiz-overlay.is-active {
+  pointer-events: all;
+}
+
+/* Expanding Sage Circle Clip Mask */
+.quiz-expand-mask {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bone);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Quiz Top Navigation Row */
+.quiz-top-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 36px;
+  border-bottom: 1px solid rgba(46, 59, 44, 0.1);
+}
+
+.quiz-brand-wordmark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--color-moss);
+}
+
+.quiz-progress-counter {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-deep-sage);
+}
+
+.quiz-close-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-paper);
+  border: 1px solid rgba(46, 59, 44, 0.15);
+  color: var(--color-moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.quiz-close-button:hover {
+  background-color: var(--color-sage);
+  transform: scale(1.08);
+}
+
+/* Horizontal mobile vine */
+.quiz-mobile-vine {
+  display: none;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(46, 59, 44, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.quiz-mobile-vine-fill {
+  width: 20%;
+  height: 100%;
+  background-color: var(--color-clay);
+  transition: width 0.4s ease;
+}
+
+/* Main Body Stage: Left Growing Plant Rail + Right Question Container */
+.quiz-stage-body {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  height: calc(100svh - 96px);
+  overflow: hidden;
+}
+
+/* Left Growing Plant Rail (Desktop) */
+.quiz-plant-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  border-right: 1px solid rgba(46, 59, 44, 0.08);
+}
+
+.quiz-plant-svg {
+  width: 80px;
+  height: 80%;
+  overflow: visible;
+}
+
+.quiz-plant-stem {
+  fill: none;
+  stroke: var(--color-deep-sage);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 320; /* 20% visible per question */
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quiz-plant-node-leaf {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.quiz-plant-node-leaf.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.quiz-bloom-flower {
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: 40px 40px;
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.quiz-bloom-flower.bloomed {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Right Question & Result Content */
+.quiz-content-viewport {
+  position: relative;
+  padding: 40px 60px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Discrete Question Wrap */
+.quiz-question-card {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.quiz-question-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-moss);
+  letter-spacing: -0.03em;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.quiz-question-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-clay);
+  display: inline-block;
+}
+
+/* 2x2 Answer Cards Grid */
+.quiz-answers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.quiz-answer-card {
+  position: relative;
+  background-color: var(--color-paper);
+  border: 1px solid rgba(46, 59, 44, 0.14);
+  border-radius: 32px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+  user-select: none;
+  box-shadow: 0 4px 16px rgba(46, 59, 44, 0.04);
+}
+
+.quiz-answer-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-moss);
+  box-shadow: 0 12px 28px -6px rgba(46, 59, 44, 0.1);
+}
+
+.quiz-answer-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-clay);
+}
+
+.quiz-answer-card.is-selected {
+  border-color: var(--color-moss);
+  background-color: var(--color-paper);
+  box-shadow: 0 12px 32px -4px rgba(46, 59, 44, 0.14);
+}
+
+.quiz-answer-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 20px;
+  background-color: var(--color-bone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quiz-answer-thumb svg {
+  width: 32px;
+  height: 32px;
+}
+
+.quiz-answer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.quiz-answer-title {
+  font-family: var(--font-headline);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-moss);
+}
+
+.quiz-answer-hint {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-deep-sage);
+  line-height: 1.35;
+}
+
+.quiz-answer-check {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(46, 59, 44, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.quiz-answer-card.is-selected .quiz-answer-check {
+  background-color: var(--color-moss);
+  border-color: var(--color-moss);
+}
+
+.quiz-answer-check svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-paper);
+  stroke-width: 2.2;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.quiz-answer-card.is-selected .quiz-answer-check svg {
+  opacity: 1;
+}
+
+/* Quiz Controls (Back / Skip) */
+.quiz-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+}
+
+.quiz-back-btn, .quiz-skip-btn {
+  color: var(--color-deep-sage);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  transition: color 0.2s ease;
+}
+
+.quiz-back-btn:hover, .quiz-skip-btn:hover {
+  color: var(--color-moss);
+}
+
+/* -------------------------------------------------------------
+   "READING YOUR SKIN" MOMENT (1.6s)
+   ------------------------------------------------------------- */
+.quiz-reading-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.quiz-reading-screen.active {
+  display: flex;
+}
+
+.reading-spinner-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reading-spinner-svg {
+  width: 100%;
+  height: 100%;
+  animation: readingSpin 8s linear infinite;
+}
+
+@keyframes readingSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.reading-status-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--color-moss);
+  min-height: 48px;
+}
+
+/* -------------------------------------------------------------
+   PART C: THE RESULT SCREEN (Two columns on desktop, stacked on mobile)
+   ------------------------------------------------------------- */
+.quiz-result-view {
+  display: none;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.quiz-result-view.active {
+  display: grid;
+}
+
+/* Left Result Column: Blob, Title, Match Ring */
+.result-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.result-blob-stage {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-organic-blob {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  background-color: var(--color-sage);
+  opacity: 0.55;
+  transition: border-radius 3s ease;
+}
+
+.result-featured-art {
+  position: relative;
+  z-index: 2;
+  width: 160px;
+  height: 160px;
+}
+
+.result-featured-art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.result-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-moss);
+  letter-spacing: -0.03em;
+}
+
+.result-match-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.result-match-ring-svg {
+  width: 64px;
+  height: 64px;
+  transform: rotate(-90deg);
+}
+
+.match-ring-track {
+  fill: none;
+  stroke: rgba(46, 59, 44, 0.15);
+  stroke-width: 4;
+}
+
+.match-ring-circle {
+  fill: none;
+  stroke: var(--color-clay);
+  stroke-width: 4;
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-match-text {
+  font-family: var(--font-headline);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-moss);
+}
+
+.result-reasoning {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-deep-sage);
+  line-height: 1.45;
+}
+
+/* Right Result Column: Paper Card with Steps & Checkout */
+.result-right-card {
+  background-color: var(--color-paper);
+  border: 1px solid rgba(46, 59, 44, 0.12);
+  border-radius: 40px;
+  padding: 36px 32px;
+  box-shadow: 0 16px 40px -8px rgba(46, 59, 44, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result-steps-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.result-step-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.result-step-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-clay);
+  color: var(--color-paper);
+  font-family: var(--font-headline);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.result-step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.result-step-name {
+  font-family: var(--font-headline);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-moss);
+}
+
+.result-step-sub {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-deep-sage);
+}
+
+/* Top Ingredients Chips in Result */
+.result-ingredients-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(46, 59, 44, 0.1);
+  border-bottom: 1px solid rgba(46, 59, 44, 0.1);
+}
+
+.result-ing-chip {
+  background-color: var(--color-bone);
+  border: 1px solid rgba(46, 59, 44, 0.12);
+  color: var(--color-moss);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.result-ing-chip:hover {
+  background-color: var(--color-sage);
+}
+
+/* Price & Add Full Ritual */
+.result-pricing-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-moss);
+}
+
+.result-price-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-discount-line {
+  color: var(--color-clay);
+  font-weight: 600;
+}
+
+.result-total-line {
+  font-family: var(--font-headline);
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-top: 1px dashed rgba(46, 59, 44, 0.15);
+  padding-top: 8px;
+}
+
+.result-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.result-btn-add-bundle {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-moss);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -4px rgba(46, 59, 44, 0.2);
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.result-btn-add-bundle:hover {
+  background-color: var(--color-deep-sage);
+  transform: translateY(-2px);
+}
+
+.result-btn-retake {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-deep-sage);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Responsive Rules */
+@media (max-width: 900px) {
+  .ritual-section {
+    padding: 100px 20px;
+  }
+
+  .ritual-timeline-stage {
+    padding-left: 0;
+  }
+
+  .ritual-timeline-svg {
+    display: none;
+  }
+
+  .ritual-step-row {
+    grid-template-columns: 44px 1fr auto;
+    gap: 14px;
+  }
+
+  .step-thumb-wrap {
+    display: none;
+  }
+
+  .quiz-stage-body {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-plant-rail {
+    display: none;
+  }
+
+  .quiz-mobile-vine {
+    display: block;
+  }
+
+  .quiz-content-viewport {
+    padding: 24px 20px;
+  }
+
+  .quiz-answers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-result-view {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ritual-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ritual-step-row {
+    grid-template-columns: 1fr auto;
+    padding: 16px;
+  }
+
+  .step-node-dot {
+    display: none;
+  }
+}

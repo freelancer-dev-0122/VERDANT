@@ -1,0 +1,341 @@
+/* /src/styles/footer.css */
+/* PART D: FOOTER (tone moss, padding 140px top, 40px bottom) */
+
+.verdant-footer {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-moss);
+  color: var(--color-paper);
+  padding: 140px var(--space-4) 40px var(--space-4);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: background-color 0.9s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.footer-inner-wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* Headline & Primary CTAs */
+.footer-cta-block {
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto 80px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(3.2rem, 7.5vw, 7.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-paper);
+  letter-spacing: -0.03em;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.footer-headline-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-clay);
+  display: inline-block;
+}
+
+.footer-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-quiz-pill {
+  background-color: var(--color-paper);
+  color: var(--color-moss);
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.footer-quiz-pill:hover {
+  background-color: var(--color-bone);
+  transform: translateY(-2px);
+}
+
+.footer-shop-pill {
+  background-color: transparent;
+  color: var(--color-paper);
+  border: 1.5px solid var(--color-paper);
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.footer-shop-pill:hover {
+  background-color: rgba(247, 243, 234, 0.12);
+  transform: translateY(-2px);
+}
+
+/* THE GROWING GARDEN STAGE */
+.footer-garden-stage {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  border-bottom: 1.5px solid rgba(247, 243, 234, 0.2);
+  padding-bottom: 6px;
+}
+
+.garden-soil-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(247, 243, 234, 0.2);
+}
+
+.garden-sprig-item {
+  position: relative;
+  transform-origin: bottom center;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.garden-sprig-item svg {
+  overflow: visible;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.garden-sprig-blossom {
+  position: absolute;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-clay);
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.garden-sprig-blossom.bloomed {
+  transform: scale(1);
+}
+
+/* 4-Column Footer Grid (Paper 20% hairline dividers) */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(247, 243, 234, 0.16);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-col-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav-link {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(247, 243, 234, 0.8);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-nav-link:hover {
+  color: var(--color-paper);
+}
+
+/* Newsletter Column */
+.footer-newsletter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-newsletter-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(247, 243, 234, 0.72);
+  line-height: 1.45;
+}
+
+.newsletter-form-row {
+  display: flex;
+  align-items: center;
+  background-color: rgba(247, 243, 234, 0.1);
+  border: 1px solid rgba(247, 243, 234, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 4px 6px 4px 14px;
+}
+
+.newsletter-input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-paper);
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(247, 243, 234, 0.45);
+}
+
+.newsletter-submit-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-paper);
+  color: var(--color-moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.newsletter-submit-btn:hover {
+  background-color: var(--color-bone);
+  transform: scale(1.06);
+}
+
+.newsletter-error-msg {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-clay);
+  display: none;
+}
+
+.newsletter-error-msg.visible {
+  display: block;
+}
+
+.newsletter-success-state {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-sage);
+}
+
+.newsletter-success-state.visible {
+  display: flex;
+}
+
+/* Bottom Bar */
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 36px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(247, 243, 234, 0.6);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-badges-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-pill-badge {
+  border: 1px solid rgba(247, 243, 234, 0.25);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(247, 243, 234, 0.85);
+}
+
+.footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(247, 243, 234, 0.1);
+  border: 1px solid rgba(247, 243, 234, 0.2);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.footer-back-to-top:hover {
+  background-color: var(--color-paper);
+  color: var(--color-moss);
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .footer-garden-stage {
+    height: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,117 @@
+// /src/data/ingredients.js
+// 8 botanical entries with pure botanical studio details, reused by the explorer & quiz
+
+export const ingredients = [
+  {
+    id: 'aloe-vera',
+    name: 'Aloe Vera',
+    latin: 'Aloe barbadensis',
+    origin: 'Andalucía, Spain',
+    role: 'Soothing Hydrator',
+    blurb: 'Cold-pressed inner leaf mucilage delivers cellular hydration and calms sun-fatigued tissue. Rich in polysaccharides that support skin resilience and lock in dewy moisture.',
+    percent: 99,
+    concerns: ['HYDRATION', 'CALM'],
+    foundIn: ['dew-serum', 'petal-mist'],
+    fact: 'Harvested entirely by hand at sunrise when leaf osmotic pressure peaks.',
+    tone: 'sage',
+    art: 'eucalyptus'
+  },
+  {
+    id: 'calendula',
+    name: 'Calendula',
+    latin: 'Calendula officinalis',
+    origin: 'Provence, France',
+    role: 'Skin Calmer',
+    blurb: 'Sun-steeped golden blossoms packed with soothing faradiol esters and carotenoids. Helps pacify reactive redness while nurturing vulnerable skin surfaces.',
+    percent: 95,
+    concerns: ['CALM', 'BARRIER'],
+    foundIn: ['moss-cream', 'clay-cleanser'],
+    fact: 'Flowers are whole-head macerated in unrefined virgin olive squalane for 40 days.',
+    tone: 'clay',
+    art: 'singlePetal'
+  },
+  {
+    id: 'green-tea',
+    name: 'Green Tea',
+    latin: 'Camellia sinensis',
+    origin: 'Shizuoka, Japan',
+    role: 'Potent Antioxidant',
+    blurb: 'Shade-grown first harvest leaves brimming with epigallocatechin gallate (EGCG). Shields delicate cells from urban oxidative stress while restoring vital radiance.',
+    percent: 94,
+    concerns: ['GLOW'],
+    foundIn: ['petal-mist', 'dew-serum'],
+    fact: 'Steamed within two hours of picking to lock in polyphenol vitality.',
+    tone: 'sage',
+    art: 'rosemarySprig'
+  },
+  {
+    id: 'rosehip-oil',
+    name: 'Rosehip Oil',
+    latin: 'Rosa canina',
+    origin: 'Patagonia, Chile',
+    role: 'Nourishing Lipid',
+    blurb: 'Wild mountain hips supercritical CO2-extracted for unmatched provitamin A and essential fatty acids. Deeply regenerates lipid membranes and encourages supple bounce.',
+    percent: 97,
+    concerns: ['GLOW', 'BARRIER'],
+    foundIn: ['dew-serum', 'moss-cream'],
+    fact: 'Grown wild in Andean volcanic soils under intense ultraviolet sunlight.',
+    tone: 'clay',
+    art: 'singlePetal'
+  },
+  {
+    id: 'colloidal-oat',
+    name: 'Colloidal Oat',
+    latin: 'Avena sativa',
+    origin: 'Scottish Highlands',
+    role: 'Barrier Comfort',
+    blurb: 'Finely milled whole kernel oats rich in beta-glucans and avenanthramides. Cushions sensitive moisture barriers and mitigates trans-epidermal water loss.',
+    percent: 98,
+    concerns: ['CALM', 'BARRIER'],
+    foundIn: ['clay-cleanser', 'moss-cream'],
+    fact: 'Milled to sub-micron particle size for an imperceptible milky veil on the skin.',
+    tone: 'bone',
+    art: 'fern'
+  },
+  {
+    id: 'olive-squalane',
+    name: 'Olive Squalane',
+    latin: 'Olea europaea',
+    origin: 'Crete, Greece',
+    role: 'Weightless Moisture',
+    blurb: 'Biocompatible lipid mimic derived from century-old Mediterranean olive oil pressings. Absorbs instantly to fortify natural sebum without congesting pores.',
+    percent: 100,
+    concerns: ['HYDRATION', 'BARRIER'],
+    foundIn: ['dew-serum', 'moss-cream'],
+    fact: '100% plant-derived alternative that matches the human skin lipid profile.',
+    tone: 'sage',
+    art: 'oliveTwig'
+  },
+  {
+    id: 'sea-kelp',
+    name: 'Sea Kelp',
+    latin: 'Laminaria digitata',
+    origin: 'Brittany, France',
+    role: 'Mineral Boost',
+    blurb: 'Wild Atlantic ocean fronds rich in marine trace minerals, iodine, and fucoidans. Floods the epidermal mantle with cellular nutrients for a firm, supple finish.',
+    percent: 96,
+    concerns: ['HYDRATION', 'GLOW'],
+    foundIn: ['dew-serum', 'petal-mist'],
+    fact: 'Sustainably hand-cut above the root so maritime kelp forests regenerate within seasons.',
+    tone: 'sage',
+    art: 'monsteraPiece'
+  },
+  {
+    id: 'chamomile',
+    name: 'Chamomile',
+    latin: 'Matricaria recutita',
+    origin: 'Alföld, Hungary',
+    role: 'Gentle Calming',
+    blurb: 'Steam-distilled blue flower buds containing concentrated chamazulene and bisabolol. Relaxes tension, softens dry micro-crevices, and comforts delicate complexions.',
+    percent: 93,
+    concerns: ['CALM'],
+    foundIn: ['clay-cleanser', 'petal-mist'],
+    fact: 'Yields a naturally deep inky-azure hydrosol during the first 15 minutes of distillation.',
+    tone: 'bone',
+    art: 'singlePetal'
+  }
+];

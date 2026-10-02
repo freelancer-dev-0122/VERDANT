@@ -1,0 +1,56 @@
+/* /src/styles/sections.css */
+.anchor-section {
+  min-height: 40svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  position: relative;
+  border-top: 1px solid rgba(46, 59, 44, 0.08);
+  box-sizing: border-box;
+}
+
+.anchor-section-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(4rem, 10vw, 8rem);
+  opacity: 0.04;
+  color: var(--color-moss);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.anchor-section-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 480px;
+}
+
+.anchor-section-number {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: 8px;
+}
+
+.anchor-section-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-moss);
+  margin-bottom: 8px;
+}
+
+.anchor-section-sub {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-deep-sage);
+}

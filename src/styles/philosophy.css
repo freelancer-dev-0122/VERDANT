@@ -1,0 +1,314 @@
+/* /src/styles/philosophy.css */
+/* SECTION A: PHILOSOPHY (id="philosophy", tone moss, padding 160px top/bottom, max-width 1200px) */
+
+.philosophy-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 160px var(--space-4);
+  box-sizing: border-box;
+  color: var(--color-paper);
+}
+
+.philosophy-intro {
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 5;
+}
+
+.philosophy-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin-bottom: var(--space-2);
+}
+
+.philosophy-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(3.2rem, 7vw, 7.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-paper);
+  letter-spacing: -0.03em;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.philosophy-heading-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-clay);
+  display: inline-block;
+}
+
+/* Stem & Principles Container */
+.philosophy-stage {
+  position: relative;
+  width: 100%;
+  min-height: 980px;
+  margin: 0 auto 120px auto;
+}
+
+/* Vertical SVG Stem in the center */
+.philosophy-stem-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.philosophy-stem-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Growing Stem Tip Bud (Clay) */
+.stem-bud {
+  fill: var(--color-clay);
+  transform-origin: center;
+  will-change: transform, cx, cy;
+}
+
+/* Three Principles alternating left and right */
+.principles-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
+  z-index: 4;
+}
+
+.principle-item {
+  position: relative;
+  width: 44%;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+.principle-item.align-left {
+  align-self: flex-start;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.principle-item.align-right {
+  align-self: flex-end;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.principle-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.principle-item.align-left .principle-header-row {
+  justify-content: flex-end;
+}
+
+.principle-item.align-right .principle-header-row {
+  justify-content: flex-start;
+}
+
+.principle-number {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-sage);
+  user-select: none;
+}
+
+.principle-blob-badge {
+  width: 58px;
+  height: 58px;
+  background-color: rgba(169, 183, 158, 0.16);
+  border: 1px solid rgba(169, 183, 158, 0.25);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.principle-blob-badge svg {
+  width: 32px;
+  height: 32px;
+}
+
+.principle-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  font-weight: 400;
+  color: var(--color-paper);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  padding-bottom: 0.16em;
+  margin-bottom: calc(12px - 0.16em);
+}
+
+.principle-desc {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  color: rgba(247, 243, 234, 0.7);
+  line-height: 1.5;
+  max-width: 440px;
+}
+
+.principle-item.align-left .principle-desc {
+  margin-left: auto;
+}
+
+/* Stats Row */
+.philosophy-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  border-top: 1px solid rgba(169, 183, 158, 0.25);
+  border-bottom: 1px solid rgba(169, 183, 158, 0.25);
+  padding: 48px 0;
+  margin-top: 60px;
+  position: relative;
+  z-index: 5;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: rgba(169, 183, 158, 0.25);
+}
+
+.stat-number-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-headline);
+  font-size: clamp(3.2rem, 5.5vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-paper);
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.stat-suffix {
+  font-size: 0.6em;
+  color: var(--color-clay);
+  margin-left: 2px;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  color: rgba(247, 243, 234, 0.72);
+  max-width: 240px;
+}
+
+/* Responsive adjustments for Philosophy */
+@media (max-width: 900px) {
+  .philosophy-section {
+    padding: 120px var(--space-3);
+  }
+
+  .philosophy-stage {
+    min-height: 900px;
+  }
+
+  .principle-item {
+    width: 48%;
+  }
+
+  .principle-item.align-left {
+    padding-right: 32px;
+  }
+
+  .principle-item.align-right {
+    padding-left: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: 96px 20px;
+  }
+
+  .philosophy-intro {
+    text-align: left;
+    margin-bottom: 64px;
+  }
+
+  /* On mobile the stem moves to the left edge (24px from border), all principles sit to its right */
+  .philosophy-stem-wrap {
+    left: 24px;
+    transform: none;
+    width: 60px;
+  }
+
+  .principles-list {
+    gap: 80px;
+  }
+
+  .principle-item {
+    width: calc(100% - 60px);
+    align-self: flex-start !important;
+    text-align: left !important;
+    padding-left: 60px !important;
+    padding-right: 0 !important;
+  }
+
+  .principle-item.align-left .principle-header-row,
+  .principle-item.align-right .principle-header-row {
+    justify-content: flex-start;
+  }
+
+  .principle-item.align-left .principle-desc {
+    margin-left: 0;
+  }
+
+  /* Stats stack vertically on mobile */
+  .philosophy-stats-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 36px 0;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .stat-item {
+    padding: 0;
+  }
+}

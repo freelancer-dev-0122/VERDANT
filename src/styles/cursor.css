@@ -1,0 +1,81 @@
+/* /src/styles/cursor.css */
+.verdant-cursor-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: var(--cursor-blend, multiply);
+}
+
+.verdant-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  margin-left: -7px;
+  background-color: var(--color-moss);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  will-change: transform;
+}
+
+body[data-tone="moss"] .verdant-cursor-dot {
+  background-color: var(--color-paper);
+}
+
+.verdant-cursor-blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  margin-top: -28px;
+  margin-left: -28px;
+  background-color: var(--color-clay);
+  opacity: 0.22;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, width, height, border-radius;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+}
+
+body[data-tone="moss"] .verdant-cursor-blob {
+  background-color: var(--color-clay);
+  opacity: 0.35;
+}
+
+.verdant-cursor-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  user-select: none;
+}
+
+body[data-tone="moss"] .verdant-cursor-label {
+  color: var(--color-moss);
+}
+
+@media (pointer: coarse) {
+  .verdant-cursor-wrap {
+    display: none !important;
+  }
+}

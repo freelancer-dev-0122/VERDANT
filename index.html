@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>VERDANT — Slow Botanical Skincare Studio</title>
+  <meta name="description" content="Plant-powered rituals, made in small batches. Deep restorative skincare crafted slowly with wild botanicals, cold-pressed extracts, and unhurried studio precision.">
+  <meta name="theme-color" content="#A9B79E">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://verdant-studio.com/">
+  <meta property="og:title" content="VERDANT — Slow Botanical Skincare Studio">
+  <meta property="og:description" content="Plant-powered rituals, made in small batches. Deep restorative skincare crafted slowly with wild botanicals, cold-pressed extracts, and unhurried studio precision.">
+  <meta property="og:image" content="./og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://verdant-studio.com/">
+  <meta name="twitter:title" content="VERDANT — Slow Botanical Skincare Studio">
+  <meta name="twitter:description" content="Plant-powered rituals, made in small batches. Deep restorative skincare crafted slowly with wild botanicals, cold-pressed extracts, and unhurried studio precision.">
+  <meta name="twitter:image" content="./og-image.png">
+
+  <!-- JSON-LD Structured Data: Organization & Products -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://verdant-studio.com/#organization",
+        "name": "Verdant Botanicals",
+        "url": "https://verdant-studio.com/",
+        "logo": "https://verdant-studio.com/og-image.png",
+        "description": "Artisanal botanical skincare studio formulating slow rituals in small batches."
+      },
+      {
+        "@type": "Product",
+        "name": "Dew Serum",
+        "description": "Deep moisture replenishment with tremella mushroom, cold-pressed olive squalane, and wild coastal moss.",
+        "offers": {
+          "@type": "Offer",
+          "price": "48.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Moss Cream",
+        "description": "Rich cellular shield infused with sub-arctic lichens, blue tansy, and cold-milled elderberry wax.",
+        "offers": {
+          "@type": "Offer",
+          "price": "42.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Clay Cleanser",
+        "description": "Gentle mineral purifying milk crafted with sun-dried glacial clay, colloidal oats, and chamomile distillate.",
+        "offers": {
+          "@type": "Offer",
+          "price": "34.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Petal Mist",
+        "description": "Cellular toning vapor distilled from alpine rose petals, organic witch hazel hydrosol, and cucumber bio-water.",
+        "offers": {
+          "@type": "Offer",
+          "price": "28.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Bricolage Grotesque (300, 400, 500), Instrument Serif (400 italic), Figtree (300, 400, 500, 600) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/styles/variables.css">
+  <link rel="stylesheet" href="./src/styles/base.css">
+  <link rel="stylesheet" href="./src/styles/cursor.css">
+  <link rel="stylesheet" href="./src/styles/loader.css">
+  <link rel="stylesheet" href="./src/styles/hero.css">
+  <link rel="stylesheet" href="./src/styles/philosophy.css">
+  <link rel="stylesheet" href="./src/styles/shop.css">
+  <link rel="stylesheet" href="./src/styles/ingredients.css">
+  <link rel="stylesheet" href="./src/styles/ritual.css">
+  <link rel="stylesheet" href="./src/styles/dock.css">
+  <link rel="stylesheet" href="./src/styles/cart.css">
+  <link rel="stylesheet" href="./src/styles/quiz.css">
+  <link rel="stylesheet" href="./src/styles/sections.css">
+  <link rel="stylesheet" href="./src/styles/journal.css">
+  <link rel="stylesheet" href="./src/styles/testimonials.css">
+  <link rel="stylesheet" href="./src/styles/footer.css">
+</head>
+<body data-tone="bone">
+
+  <!-- Accessible Skip Link -->
+  <a href="#main" class="skip-to-content">Skip to content</a>
+
+  <!-- Paper Grain Overlay -->
+  <div class="paper-grain-overlay" aria-hidden="true"></div>
+
+  <!-- LOADER (Seed drop -> stem draw -> leaves unfurl -> circle expansion into hero) -->
+  <div class="verdant-loader" id="loader" aria-label="Loading Verdant Studio">
+    <div class="loader-canvas-container">
+      <svg class="loader-sprout-svg" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tiny soil line -->
+        <path d="M15 105 Q40 102 65 105" stroke="#2E3B2C" stroke-width="2" stroke-linecap="round"/>
+        <!-- Clay seed dropping down -->
+        <circle class="loader-seed" cx="40" cy="100" r="5.5" fill="#C98F72"/>
+        <!-- Stem drawing upward -->
+        <path class="loader-stem" d="M40 100 C39 75 42 45 40 20" stroke="#2E3B2C" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Left leaf unfurling -->
+        <path class="loader-leaf-left" d="M40 65 C22 62 12 48 16 38 C28 42 36 54 40 65 Z" fill="#6F8268"/>
+        <!-- Right leaf unfurling -->
+        <path class="loader-leaf-right" d="M40 65 C58 62 68 48 64 38 C52 42 44 54 40 65 Z" fill="#A9B79E"/>
+        <!-- Sage bud at the tip (origin for expansion circle) -->
+        <circle class="loader-bud" cx="40" cy="20" r="4.5" fill="#A9B79E"/>
+      </svg>
+      <div class="loader-wordmark">verdant</div>
+    </div>
+    <!-- Expanding circle clip mask -->
+    <div class="loader-reveal-circle"></div>
+  </div>
+
+  <!-- HERO SECTION (Sage background, no top pill nav, no split panels) -->
+  <header class="hero-section hero-hidden" id="hero">
+    
+    <!-- Top Row (Safe margin 24px) -->
+    <div class="hero-top-row">
+      <a href="#hero" class="hero-wordmark-wrap" data-cursor="VERDANT">
+        <svg class="hero-wordmark-leaf" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C8 7 6 12 12 22C18 12 16 7 12 2Z"/>
+        </svg>
+        <span>verdant</span>
+      </a>
+
+      <div class="hero-top-actions">
+        <a href="#account" class="hero-account-link" id="account-link" data-cursor="PROFILE">Account</a>
+        <button class="hero-cart-btn" id="hero-cart-trigger" data-cursor="BASKET" aria-label="Open studio basket">
+          <span>Basket</span>
+          <span class="hero-cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Botanical Stage: Huge Organic Blob + Orbit + Products -->
+    <div class="hero-center-stage" data-cursor="TOUCH" aria-label="Interactive botanical formula showcase">
+      <!-- Animated Organic Blob (8-value border-radius continuous loop) -->
+      <div class="hero-organic-blob"></div>
+
+      <!-- Orbit Ring with tiny Clay Dot -->
+      <div class="hero-orbit-ring" aria-hidden="true">
+        <div class="hero-orbit-dot"></div>
+      </div>
+
+      <!-- Floating Products inside the Blob -->
+      <div class="hero-products-composite"></div>
+
+      <!-- Clay Sticker Badges floating around blob -->
+      <div class="hero-sticker-badge badge-vegan" data-cursor="100%">100% VEGAN</div>
+      <div class="hero-sticker-badge badge-refillable" data-cursor="REUSE">REFILLABLE</div>
+      <div class="hero-sticker-badge badge-bcorp" data-cursor="ETHICAL">B CORP</div>
+    </div>
+
+    <!-- Parallax Botanical Sprigs Field (8-10 sprigs at varying depths) -->
+    <div class="hero-botanicals-field" aria-hidden="true"></div>
+
+    <!-- Headline (Lower-Left, clear of blob on desktop) -->
+    <div class="hero-bottom-area">
+      <div class="hero-headline-wrap">
+        <h1 class="hero-title">
+          <span class="hero-title-line-1">Skin, grown</span><br>
+          <span class="hero-title-line-2 hero-title-accent">slowly.</span>
+        </h1>
+        <p class="hero-subhead">Plant-powered rituals, made in small batches. Nothing hurried, nothing hidden.</p>
+        <div class="hero-cta-group">
+          <button class="hero-btn-moss" data-magnetic data-cursor="OPEN" id="cta-quiz-btn">Find your ritual ↗</button>
+          <a href="#shop" class="hero-link-shop" data-cursor="SHOP">Shop the collection</a>
+        </div>
+      </div>
+
+      <!-- Bottom-Right Rotating Text Badge (SVG textPath) -->
+      <div class="hero-scroll-badge" id="scroll-badge" data-cursor="SCROLL">
+        <svg class="hero-scroll-svg" viewBox="0 0 100 100">
+          <defs>
+            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+          </defs>
+          <text>
+            <textPath href="#circlePath">SCROLL TO EXPLORE • SCROLL TO EXPLORE • </textPath>
+          </text>
+        </svg>
+        <svg class="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT: PHILOSOPHY, THE COLLECTION, AND UPCOMING FORMULATION ANCHORS -->
+  <main id="main">
+    <!-- SECTION A: PHILOSOPHY (id="philosophy", tone moss, padding 160px top/bottom, max-width 1200px) -->
+    <section class="philosophy-section" id="philosophy" data-tone="moss">
+      <div class="philosophy-intro">
+        <span class="philosophy-eyebrow">Our Philosophy</span>
+        <h2 class="philosophy-heading">
+          Rooted in <span class="philosophy-heading-accent">restraint.</span>
+        </h2>
+      </div>
+
+      <!-- Growing Stem Stage with alternating principles -->
+      <div class="philosophy-stage">
+        
+        <!-- Central vertical SVG stem with bud and unfurling leaves -->
+        <div class="philosophy-stem-wrap" aria-hidden="true">
+          <svg class="philosophy-stem-svg" viewBox="0 0 100 900" preserveAspectRatio="none">
+            <!-- Curved stem drawing path -->
+            <path class="stem-draw-path" d="M50 0 C40 150, 60 300, 50 450 C40 600, 60 750, 50 900" 
+                  fill="none" stroke="#6F8268" stroke-width="3" stroke-linecap="round"/>
+            
+            <!-- Milestone Leaf Pair 01 (~22% down) -->
+            <g class="stem-leaf-pair" transform="translate(50, 200) scale(0)" style="transform-origin: 50px 200px; opacity: 0;">
+              <path d="M0 0 C-18 -10 -28 5 -24 16 C-12 14 -4 8 0 0 Z" fill="#6F8268"/>
+              <path d="M0 0 C18 -10 28 5 24 16 C12 14 4 8 0 0 Z" fill="#A9B79E"/>
+            </g>
+
+            <!-- Milestone Leaf Pair 02 (~54% down) -->
+            <g class="stem-leaf-pair" transform="translate(50, 485) scale(0)" style="transform-origin: 50px 485px; opacity: 0;">
+              <path d="M0 0 C-20 -12 -30 6 -26 18 C-14 15 -5 9 0 0 Z" fill="#A9B79E"/>
+              <path d="M0 0 C20 -12 30 6 26 18 C14 15 5 9 0 0 Z" fill="#6F8268"/>
+            </g>
+
+            <!-- Milestone Leaf Pair 03 (~86% down) -->
+            <g class="stem-leaf-pair" transform="translate(50, 770) scale(0)" style="transform-origin: 50px 770px; opacity: 0;">
+              <path d="M0 0 C-18 -8 -26 8 -22 18 C-10 14 -3 8 0 0 Z" fill="#6F8268"/>
+              <path d="M0 0 C18 -8 26 8 22 18 C10 14 3 8 0 0 Z" fill="#A9B79E"/>
+            </g>
+
+            <!-- Clay Bud Riding Stem Tip -->
+            <circle class="stem-bud" cx="50" cy="0" r="5.5" fill="#C98F72"/>
+          </svg>
+        </div>
+
+        <!-- Three Principles alternating left and right -->
+        <div class="principles-list">
+          
+          <!-- Principle 01 (Left) -->
+          <article class="principle-item align-left">
+            <div class="principle-header-row">
+              <span class="principle-number">01</span>
+              <div class="principle-blob-badge"></div>
+            </div>
+            <h3 class="principle-title">Fewer, better ingredients.</h3>
+            <p class="principle-desc">Never more than twelve, each one earning its place.</p>
+          </article>
+
+          <!-- Principle 02 (Right) -->
+          <article class="principle-item align-right">
+            <div class="principle-header-row">
+              <div class="principle-blob-badge"></div>
+              <span class="principle-number">02</span>
+            </div>
+            <h3 class="principle-title">Made in small batches.</h3>
+            <p class="principle-desc">Poured by hand in lots of 400, so every bottle is fresh.</p>
+          </article>
+
+          <!-- Principle 03 (Left) -->
+          <article class="principle-item align-left">
+            <div class="principle-header-row">
+              <span class="principle-number">03</span>
+              <div class="principle-blob-badge"></div>
+            </div>
+            <h3 class="principle-title">Refill, don't replace.</h3>
+            <p class="principle-desc">Return the jar. We clean it, fill it and send it back.</p>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Stats Row (Odometer animation overlay, renders final value by default) -->
+      <div class="philosophy-stats-row">
+        <div class="stat-item" data-stat="plastic">
+          <div class="stat-number-wrap">
+            <span class="stat-val">0</span>
+          </div>
+          <span class="stat-label">Plastic waste to landfill</span>
+        </div>
+
+        <div class="stat-item" data-stat="natural">
+          <div class="stat-number-wrap">
+            <span class="stat-val">98</span>
+            <span class="stat-suffix">%</span>
+          </div>
+          <span class="stat-label">Natural origin</span>
+        </div>
+
+        <div class="stat-item" data-stat="ingredients">
+          <div class="stat-number-wrap">
+            <span class="stat-val">12</span>
+          </div>
+          <span class="stat-label">Ingredients, at most</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION B: THE COLLECTION (id="shop", padding 140px top, 200px bottom, max-width 1200px) -->
+    <section class="shop-section" id="shop">
+      <div class="shop-header">
+        <div class="shop-header-left">
+          <span class="shop-eyebrow">The Collection</span>
+          <h2 class="shop-title">Four <span class="shop-title-accent">small</span> rituals.</h2>
+        </div>
+        <div class="shop-header-right">
+          Each one made to be used slowly.
+        </div>
+      </div>
+
+      <!-- Stacked Sticky Cards Container -->
+      <div class="shop-deck-wrapper"></div>
+
+      <!-- Closing Strip Under Deck -->
+      <div class="shop-closing-strip">
+        <p class="shop-closing-text">Free shipping over $60. Returns within 30 days, no questions.</p>
+        <button type="button" class="shop-quiz-pill" data-cursor="QUIZ">Take the skin quiz ↗</button>
+      </div>
+    </section>
+
+    <!-- SECTION: THE INGREDIENT EXPLORER (id="ingredients", tone bone, padding 140px top/bottom, max-width 1320px) -->
+    <section class="ingredients-section" id="ingredients" data-tone="bone">
+      <!-- Section Header -->
+      <div class="ingredients-header">
+        <div class="ingredients-header-left">
+          <span class="ingredients-eyebrow">The Ingredients</span>
+          <h2 class="ingredients-title">Eight <span class="ingredients-title-accent">plants.</span> That's the list.</h2>
+        </div>
+        <div class="ingredients-header-right">
+          Spin the wheel. Every ingredient is named, sourced and explained.
+        </div>
+      </div>
+
+      <!-- Concern Filters Bar -->
+      <div class="ingredients-filters-bar">
+        <span class="ingredients-filters-label">Filter by concern:</span>
+        <button type="button" class="concern-filter-pill" data-concern="HYDRATION">HYDRATION</button>
+        <button type="button" class="concern-filter-pill" data-concern="CALM">CALM</button>
+        <button type="button" class="concern-filter-pill" data-concern="GLOW">GLOW</button>
+        <button type="button" class="concern-filter-pill" data-concern="BARRIER">BARRIER</button>
+        <button type="button" class="ingredients-clear-filter">Clear filters</button>
+      </div>
+
+      <!-- 12-Column Explorer Grid (Left: Wheel, Right: Detail Panel) -->
+      <div class="ingredients-grid">
+        
+        <!-- Left: The Interactive Wheel Stage (Cols 1-7) -->
+        <div class="ingredients-wheel-col">
+          <!-- 8 floating parallax sprigs behind the wheel -->
+          <div class="wheel-botanicals-backdrop" aria-hidden="true"></div>
+
+          <!-- Wheel Stage -->
+          <div class="ingredients-wheel-stage" data-cursor="DRAG" tabindex="0" role="region" aria-label="Interactive botanical wheel">
+            
+            <!-- 12 o'clock Fixed Marker -->
+            <div class="wheel-marker-top" aria-hidden="true">
+              <svg viewBox="0 0 16 12">
+                <path d="M0 0 L16 0 L8 12 Z"/>
+              </svg>
+            </div>
+
+            <!-- Concentric Hairline & Dashed Rings -->
+            <svg class="wheel-rings-svg" viewBox="0 0 540 540" fill="none">
+              <circle cx="270" cy="270" r="236" stroke="#2E3B2C" stroke-opacity="0.14" stroke-width="1"/>
+              <circle cx="270" cy="270" r="170" stroke="#2E3B2C" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4 6"/>
+            </svg>
+
+            <!-- Autoplay Progress Arc Countdown -->
+            <svg class="wheel-progress-arc-svg" viewBox="0 0 240 240" fill="none">
+              <path class="wheel-progress-arc-path" d="M 120, 2 A 118,118 0 1,1 119.9, 2"/>
+            </svg>
+
+            <!-- Rotating Track holding the 8 Nodes -->
+            <div class="wheel-rotating-track" role="radiogroup" aria-label="Botanical ingredient selection"></div>
+
+            <!-- Center Hub: Morphing Blob + Rotating Text Badge + Selected Art -->
+            <div class="wheel-center-hub" aria-hidden="true">
+              <div class="wheel-center-blob"></div>
+              <svg class="wheel-center-text-badge" viewBox="0 0 240 240">
+                <defs>
+                  <path id="hubTextPath" d="M 120, 120 m -88, 0 a 88,88 0 1,1 176,0 a 88,88 0 1,1 -176,0"/>
+                </defs>
+                <text>
+                  <textPath href="#hubTextPath">ONE PLANT AT A TIME • ONE PLANT AT A TIME • </textPath>
+                </text>
+              </svg>
+              <div class="wheel-center-art"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: The Detail Panel (Cols 8-12) -->
+        <div class="ingredients-detail-col">
+          <div class="ingredient-detail-card" role="region" aria-live="polite" aria-atomic="true">
+            <div class="detail-content-wrap"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Screen Reader Announcement Region -->
+      <div class="ingredients-sr-status" aria-live="polite"></div>
+    </section>
+
+    <!-- SECTION: THE RITUAL (id="ritual", tone sage, padding 140px top/bottom, max-width 1200px) -->
+    <section class="ritual-section" id="ritual" data-tone="sage">
+      <!-- Decorative celestial sun / moon morphing blob -->
+      <div class="ritual-celestial-blob" aria-hidden="true"></div>
+
+      <!-- Section Header -->
+      <div class="ritual-header">
+        <div class="ritual-header-left">
+          <div class="ritual-eyebrow-row">
+            <span class="ritual-eyebrow">The Ritual</span>
+            <div class="ritual-custom-badge">
+              <span>Your Personal Formulation</span>
+              <button type="button" class="ritual-retake-btn">Retake quiz</button>
+            </div>
+          </div>
+          <h2 class="ritual-title">A routine you'll <span class="ritual-title-accent">actually</span> keep.</h2>
+        </div>
+
+        <div class="ritual-header-right">
+          <!-- Morning / Evening Toggle Pill -->
+          <div class="ritual-toggle-pill" role="tablist" aria-label="Ritual time of day">
+            <div class="ritual-toggle-indicator" aria-hidden="true"></div>
+            <button type="button" class="ritual-toggle-btn active" role="tab" aria-selected="true" data-mode="am">Morning</button>
+            <button type="button" class="ritual-toggle-btn" role="tab" aria-selected="false" data-mode="pm">Evening</button>
+          </div>
+
+          <button type="button" class="hero-btn-moss ritual-start-quiz-btn" data-magnetic data-cursor="OPEN">
+            Start the quiz ↗
+          </button>
+        </div>
+      </div>
+
+      <!-- Ticked Progress Tracker -->
+      <div class="ritual-progress-tracker">
+        <span class="ritual-progress-text">0 / 4 steps completed</span>
+        <div class="ritual-progress-bar-wrap" aria-hidden="true">
+          <div class="ritual-progress-bar-fill"></div>
+        </div>
+        <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--color-deep-sage);">Daily Ritual Practice</span>
+      </div>
+
+      <!-- Vertical Timeline Stage -->
+      <div class="ritual-timeline-stage">
+        <!-- Scrubbed Vertical SVG Line with Following Bud -->
+        <svg class="ritual-timeline-svg" viewBox="0 0 16 800" preserveAspectRatio="none" aria-hidden="true">
+          <path class="timeline-stem-path" d="M8 0 L8 800"/>
+          <path class="timeline-stem-fill" d="M8 0 L8 800"/>
+          <circle class="timeline-stem-bud" cx="8" cy="10" r="4.5"/>
+        </svg>
+
+        <!-- Dynamic Steps Container (AM / PM & Personalized) -->
+        <div class="ritual-steps-container"></div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE JOURNAL (#journal, tone bone, padding 140px top, 120px bottom, max-width 1320px) -->
+    <section class="journal-section" id="journal" data-tone="bone">
+      <div class="journal-header">
+        <div class="journal-header-left">
+          <span class="journal-eyebrow">The Journal</span>
+          <h2 class="journal-title">
+            Notes from the <span class="journal-title-accent">studio.</span>
+          </h2>
+        </div>
+        <a href="#journal" class="journal-all-link" data-cursor="READ">All stories ↗</a>
+      </div>
+
+      <!-- 12-col Editorial Grid of 4 Cards -->
+      <div class="journal-grid">
+        <!-- Card 1: 7-col large -->
+        <article class="journal-card col-large" data-id="twelve-ingredients" data-cursor="READ" tabindex="0">
+          <div class="journal-art-stage">
+            <div class="journal-art-blob tone-sage"></div>
+            <svg class="journal-art-svg" viewBox="0 0 120 180" fill="none">
+              <path d="M60 175 C58 120 62 60 55 5" stroke="#2E3B2C" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="40" cy="145" rx="24" ry="16" transform="rotate(-25 40 145)" fill="#6F8268"/>
+              <ellipse cx="80" cy="138" rx="25" ry="17" transform="rotate(20 80 138)" fill="#A9B79E"/>
+              <ellipse cx="38" cy="95" rx="22" ry="15" transform="rotate(-30 38 95)" fill="#A9B79E"/>
+              <ellipse cx="82" cy="88" rx="23" ry="15" transform="rotate(25 82 88)" fill="#6F8268"/>
+              <ellipse cx="55" cy="20" rx="16" ry="12" fill="#6F8268"/>
+            </svg>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category-pill">Ingredients</span>
+              <span class="journal-read-time">4 min read</span>
+            </div>
+            <h3 class="journal-card-title">Why we stop at twelve ingredients</h3>
+            <p class="journal-card-excerpt">The rigorous discipline of formulation restraint, eliminating synthetic fillers for cellular affinity.</p>
+            <span class="journal-read-link">
+              Read <span class="journal-arrow-icon">↗</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 2: 5-col medium -->
+        <article class="journal-card col-medium" data-id="slow-science-aloe" data-cursor="READ" tabindex="0">
+          <div class="journal-art-stage">
+            <div class="journal-art-blob tone-deep-sage"></div>
+            <svg class="journal-art-svg" viewBox="0 0 110 200" fill="none">
+              <path d="M30 195 C45 130 65 65 85 10" stroke="#2E3B2C" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M36 170 C20 168 10 160 5 152 C15 150 25 158 38 165" fill="#6F8268"/>
+              <path d="M42 162 C60 156 75 152 84 148 C76 142 60 148 45 157" fill="#A9B79E"/>
+              <path d="M44 135 C24 130 14 122 10 114 C20 112 32 120 46 129" fill="#A9B79E"/>
+              <path d="M50 126 C70 120 86 116 94 110 C86 105 70 112 52 121" fill="#6F8268"/>
+            </svg>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category-pill">Ritual</span>
+              <span class="journal-read-time">5 min read</span>
+            </div>
+            <h3 class="journal-card-title">The slow science of aloe</h3>
+            <p class="journal-card-excerpt">Hand-filleted inner leaf gel preserved without heat to retain long-chain acemannan polysaccharides.</p>
+            <span class="journal-read-link">
+              Read <span class="journal-arrow-icon">↗</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 3: 6-col half -->
+        <article class="journal-card col-half-1" data-id="refill-jar-travels" data-cursor="READ" tabindex="0">
+          <div class="journal-art-stage">
+            <div class="journal-art-blob tone-clay"></div>
+            <svg class="journal-art-svg" viewBox="0 0 140 180" fill="none">
+              <path d="M70 175 C68 120 72 70 65 5" stroke="#2E3B2C" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M68 140 C48 132 35 125 40 115 C52 118 64 128 70 140 Z" fill="#6F8268"/>
+              <path d="M70 135 C90 125 102 118 100 108 C88 112 76 122 70 135 Z" fill="#A9B79E"/>
+              <circle cx="55" cy="110" r="7" fill="#C98F72"/>
+              <circle cx="85" cy="100" r="7" fill="#C98F72"/>
+            </svg>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category-pill">Sustainability</span>
+              <span class="journal-read-time">3 min read</span>
+            </div>
+            <h3 class="journal-card-title">How a refill jar travels</h3>
+            <p class="journal-card-excerpt">Heavy recycled amber glass, monomaterial aluminum lids, and carbon-neutral closed-loop pouch returns.</p>
+            <span class="journal-read-link">
+              Read <span class="journal-arrow-icon">↗</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 4: 6-col half -->
+        <article class="journal-card col-half-2" data-id="layering-without-guesswork" data-cursor="READ" tabindex="0">
+          <div class="journal-art-stage">
+            <div class="journal-art-blob tone-bone"></div>
+            <svg class="journal-art-svg" viewBox="0 0 140 170" fill="none">
+              <path d="M70 165 C68 110 70 60 70 15" stroke="#2E3B2C" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M70 130 C45 120 30 95 38 75 C52 85 64 105 70 130 Z" fill="#A9B79E"/>
+              <path d="M70 115 C95 105 110 80 102 60 C88 70 76 90 70 115 Z" fill="#6F8268"/>
+              <circle cx="70" cy="20" r="6" fill="#C98F72"/>
+            </svg>
+          </div>
+          <div class="journal-card-body">
+            <div class="journal-meta-row">
+              <span class="journal-category-pill">Skin</span>
+              <span class="journal-read-time">6 min read</span>
+            </div>
+            <h3 class="journal-card-title">Layering without the guesswork</h3>
+            <p class="journal-card-excerpt">Molecular weight progression: water-soluble botanical essences before lipid-rich recovery emulsions.</p>
+            <span class="journal-read-link">
+              Read <span class="journal-arrow-icon">↗</span>
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: TESTIMONIALS (tone sage, padding 140px top/bottom) -->
+    <section class="testimonials-section" id="testimonials" data-tone="sage">
+      <div class="testimonials-header">
+        <span class="testimonials-eyebrow">Kind Words</span>
+        <h2 class="testimonials-title">
+          Skin that feels like <span class="testimonials-title-accent">itself.</span>
+        </h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Draggable Card Stack Column -->
+        <div class="testimonials-stack-col">
+          <div class="testimonials-stack-stage" aria-live="polite">
+            <!-- Cards rendered dynamically via testimonials.js -->
+          </div>
+
+          <div class="testimonials-controls-row">
+            <span class="testimonials-counter" id="testimonials-counter">01 / 05</span>
+            <div class="testimonials-btn-group">
+              <button type="button" class="testimonials-arrow-btn testimonials-prev-btn" aria-label="Previous review" data-magnetic>←</button>
+              <button type="button" class="testimonials-arrow-btn testimonials-next-btn" aria-label="Next review" data-magnetic>→</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating Breakdown Column -->
+        <div class="testimonials-breakdown-card">
+          <div class="rating-score-row">
+            <span class="rating-big-number">4.9</span>
+            <span class="rating-reviews-count">from 2,300+ reviews</span>
+          </div>
+
+          <div class="rating-bars-list">
+            <div class="rating-bar-row">
+              <span>5★</span>
+              <div class="rating-bar-track">
+                <div class="rating-bar-fill" data-pct="92%"></div>
+              </div>
+              <span>92%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span>4★</span>
+              <div class="rating-bar-track">
+                <div class="rating-bar-fill" data-pct="6%"></div>
+              </div>
+              <span>6%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span>3★</span>
+              <div class="rating-bar-track">
+                <div class="rating-bar-fill" data-pct="1.5%"></div>
+              </div>
+              <span>1.5%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span>2★</span>
+              <div class="rating-bar-track">
+                <div class="rating-bar-fill" data-pct="0.5%"></div>
+              </div>
+              <span>0.5%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span>1★</span>
+              <div class="rating-bar-track">
+                <div class="rating-bar-fill" data-pct="0%"></div>
+              </div>
+              <span>0%</span>
+            </div>
+          </div>
+
+          <div class="rating-repurchase-badge">100% WOULD REPURCHASE</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (tone moss, padding 140px top, 40px bottom) -->
+  <footer class="verdant-footer" id="footer" data-tone="moss">
+    <div class="footer-inner-wrap">
+      
+      <!-- Headline & CTAs -->
+      <div class="footer-cta-block">
+        <h2 class="footer-headline">
+          Grow <span class="footer-headline-accent">slowly</span> with us.
+        </h2>
+        <div class="footer-btn-group">
+          <button type="button" class="footer-quiz-pill" data-magnetic data-cursor="OPEN">Take the skin quiz ↗</button>
+          <a href="#shop" class="footer-shop-pill" data-magnetic data-cursor="SHOP">Shop the collection</a>
+        </div>
+      </div>
+
+      <!-- Growing Garden Stage with 7 sprigs -->
+      <div class="footer-garden-stage" aria-hidden="true">
+        <!-- Rendered via footer.js -->
+      </div>
+
+      <!-- 4-Column Grid -->
+      <div class="footer-links-grid">
+        <!-- Col 1: Shop -->
+        <div class="footer-col">
+          <span class="footer-col-title">Shop</span>
+          <nav class="footer-nav-list" aria-label="Shop links">
+            <a href="#shop" class="footer-nav-link">Dew Serum (No. 01)</a>
+            <a href="#shop" class="footer-nav-link">Moss Cream (No. 02)</a>
+            <a href="#shop" class="footer-nav-link">Clay Cleanser (No. 03)</a>
+            <a href="#shop" class="footer-nav-link">Petal Mist (No. 04)</a>
+          </nav>
+        </div>
+
+        <!-- Col 2: Learn -->
+        <div class="footer-col">
+          <span class="footer-col-title">Learn</span>
+          <nav class="footer-nav-list" aria-label="Learn links">
+            <a href="#ingredients" class="footer-nav-link">Ingredients</a>
+            <a href="#ritual" class="footer-nav-link">Ritual Practice</a>
+            <a href="#journal" class="footer-nav-link">The Journal</a>
+            <a href="#philosophy" class="footer-nav-link">Sustainability</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Help -->
+        <div class="footer-col">
+          <span class="footer-col-title">Help</span>
+          <nav class="footer-nav-list" aria-label="Help links">
+            <a href="#account" class="footer-nav-link">Shipping & Delivery</a>
+            <a href="#account" class="footer-nav-link">Recycling Program</a>
+            <a href="#account" class="footer-nav-link">Studio Contact</a>
+            <a href="#account" class="footer-nav-link">Botanical FAQ</a>
+          </nav>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="footer-col footer-newsletter-box">
+          <span class="footer-col-title">Newsletter</span>
+          <p class="footer-newsletter-desc">Seasonal harvest dispatches, formulation notes, and studio rituals.</p>
+          <div class="newsletter-form-row">
+            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Your email address">
+            <button type="button" class="newsletter-submit-btn" aria-label="Subscribe to newsletter" data-magnetic>→</button>
+          </div>
+          <span class="newsletter-error-msg"></span>
+          <div class="newsletter-success-state">
+            <span>Welcome to the garden.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom-bar">
+        <span>© 2026 Verdant Botanicals</span>
+        <div class="footer-badges-list">
+          <span class="footer-pill-badge">B CORP</span>
+          <span class="footer-pill-badge">VEGAN</span>
+          <span class="footer-pill-badge">CARBON NEUTRAL</span>
+        </div>
+        <button type="button" class="footer-back-to-top" data-magnetic>BACK TO TOP ↑</button>
+        <span style="font-size: 0.72rem; opacity: 0.7;">Demo store. All products and reviews are fictional.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- DOCK NAV (Fixed bottom-center, macOS magnification, tone-aware) -->
+  <nav class="verdant-dock-wrap" aria-label="Quick navigation">
+    <div class="verdant-dock-nav">
+      
+      <!-- 1. Shop -->
+      <a href="#shop" class="dock-item" data-target="shop" data-cursor="SHOP" aria-label="Shop">
+        <span class="dock-tooltip">Shop</span>
+        <svg class="dock-icon-svg" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="dock-active-dot"></span>
+      </a>
+
+      <!-- 2. Ingredients -->
+      <a href="#ingredients" class="dock-item" data-target="ingredients" data-cursor="BOTANY" aria-label="Ingredients">
+        <span class="dock-tooltip">Ingredients</span>
+        <svg class="dock-icon-svg" viewBox="0 0 24 24">
+          <path d="M12 2a9 9 0 0 1 9 9c0 4.97-4.03 9-9 9A9 9 0 0 1 3 11C3 6.03 7.03 2 12 2z"></path>
+          <path d="M12 2v18"></path>
+          <path d="M12 8c2.5 0 4.5 2 4.5 4.5"></path>
+        </svg>
+        <span class="dock-active-dot"></span>
+      </a>
+
+      <!-- 3. Ritual -->
+      <a href="#ritual" class="dock-item" data-target="ritual" data-cursor="RITUAL" aria-label="Ritual">
+        <span class="dock-tooltip">Ritual</span>
+        <svg class="dock-icon-svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span class="dock-active-dot"></span>
+      </a>
+
+      <!-- 4. Journal -->
+      <a href="#journal" class="dock-item" data-target="journal" data-cursor="READ" aria-label="Journal">
+        <span class="dock-tooltip">Journal</span>
+        <svg class="dock-icon-svg" viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span class="dock-active-dot"></span>
+      </a>
+
+      <!-- 5. Cart -->
+      <button class="dock-item" data-target="cart" data-cursor="BASKET" aria-label="Studio Basket">
+        <span class="dock-tooltip">Basket</span>
+        <svg class="dock-icon-svg" viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="dock-cart-badge" style="display: none;">0</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- CART DRAWER OVERLAY -->
+  <div class="cart-drawer-overlay" aria-hidden="true">
+    <div class="cart-drawer-sage-blob" aria-hidden="true"></div>
+    <aside class="cart-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" aria-label="Your ritual" tabindex="-1">
+      <div class="cart-header-wrap">
+        <div class="cart-header">
+          <div class="cart-title-row">
+            <h2 class="cart-title" id="cart-drawer-title">Your ritual</h2>
+            <span class="cart-count-badge" id="cart-header-count">0 items</span>
+          </div>
+          <button type="button" class="cart-close-btn" aria-label="Close ritual basket" data-cursor="CLOSE" data-magnetic>✕</button>
+        </div>
+        <div class="cart-shipping-bar" aria-live="polite">
+          <span class="cart-shipping-text" id="cart-shipping-text">You're $60.00 away from free shipping</span>
+          <div class="cart-shipping-track">
+            <div class="cart-shipping-fill" id="cart-shipping-fill" style="width: 0%;">
+              <svg class="cart-shipping-leaf" viewBox="0 0 24 24">
+                <path d="M12 2C8 7 6 12 12 22C18 12 16 7 12 2Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-body-scroll" data-lenis-prevent>
+        <div class="cart-items-container" role="list"></div>
+        <div class="cart-undo-toast" id="cart-undo-toast" role="status" aria-live="polite">
+          <span id="cart-undo-text">Item removed from ritual.</span>
+          <button type="button" class="cart-undo-btn" id="cart-undo-btn">Undo</button>
+        </div>
+        <div class="cart-recommendation-row" id="cart-rec-row" style="display: none;"></div>
+        <div class="cart-promo-container" id="cart-promo-container">
+          <button type="button" class="cart-promo-toggle" id="cart-promo-toggle">Have a code?</button>
+          <div class="cart-promo-form" id="cart-promo-form">
+            <div class="cart-promo-input-row">
+              <input type="text" class="cart-promo-input" id="cart-promo-input" placeholder="ENTER CODE" aria-label="Promo code">
+              <button type="button" class="cart-promo-apply-btn" id="cart-promo-apply">Apply</button>
+            </div>
+            <span class="cart-promo-error" id="cart-promo-error">Invalid promo code</span>
+          </div>
+          <div class="cart-promo-chip" id="cart-promo-chip" style="display: none;">
+            <span id="cart-promo-chip-text"></span>
+            <span class="cart-promo-remove" id="cart-promo-remove" aria-label="Remove code">✕</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-footer-wrap">
+        <div class="cart-summary-box">
+          <div class="cart-summary-line">
+            <span>Subtotal</span>
+            <span id="cart-subtotal-val">$0.00</span>
+          </div>
+          <div class="cart-summary-line clay-text" id="cart-bundle-discount-row" style="display: none;">
+            <span>Ritual Bundle (10% off)</span>
+            <span id="cart-bundle-discount-val">-$0.00</span>
+          </div>
+          <div class="cart-summary-line clay-text" id="cart-promo-discount-row" style="display: none;">
+            <span>Promo Discount</span>
+            <span id="cart-promo-discount-val">-$0.00</span>
+          </div>
+          <div class="cart-summary-line">
+            <span>Shipping</span>
+            <span id="cart-shipping-val">$6.00</span>
+          </div>
+          <div class="cart-summary-line cart-total-line">
+            <span>Total</span>
+            <span id="cart-total-val" aria-live="polite">$0.00</span>
+          </div>
+        </div>
+        <button type="button" class="cart-checkout-btn" id="cart-checkout-btn" data-magnetic data-cursor="OPEN">
+          <span class="checkout-btn-text">Checkout ↗</span>
+          <svg class="checkout-loader-plant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22v-8M12 14c-3-2-6 0-6-3s4-4 6 0M12 14c3-2 6 0 6-3s-4-4-6 0M12 8c0-3-2-5-2-5s-2 2-2 5"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Success Screen -->
+      <div class="cart-success-view" id="cart-success-view">
+        <div class="cart-success-bloom">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="36" fill="#A9B79E" opacity="0.3"/>
+            <circle cx="40" cy="40" r="28" fill="#6F8268"/>
+            <path d="M26 40 L35 49 L54 30" stroke="#F7F3EA" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="cart-success-title">Thank you, your ritual is on its way.</h3>
+        <span class="cart-order-badge" id="cart-order-badge">VD-2610-A9B2</span>
+        <div class="cart-summary-box" id="cart-success-summary" style="width: 100%; max-width: 320px; margin: 12px 0;"></div>
+        <button type="button" class="cart-keep-exploring-link" id="cart-keep-exploring">Keep exploring</button>
+        <span class="cart-demo-notice">Demo checkout, no payment taken.</span>
+      </div>
+    </aside>
+    <!-- Aria live announcement region -->
+    <div id="cart-live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <!-- JOURNAL READING OVERLAY -->
+  <div class="journal-reading-overlay" id="journal-reading-overlay" role="dialog" aria-modal="true" aria-label="Journal Article" aria-hidden="true">
+    <div class="journal-overlay-nav">
+      <span class="journal-overlay-brand">verdant</span>
+      <button type="button" class="journal-overlay-close-btn" aria-label="Close article" data-cursor="CLOSE" data-magnetic>✕</button>
+    </div>
+    <div class="journal-article-scroll" data-lenis-prevent>
+      <div class="journal-article-content">
+        <span class="journal-article-category"></span>
+        <h2 class="journal-article-title"></h2>
+        <span class="journal-article-meta"></span>
+        <div class="journal-article-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN QUIZ OVERLAY (100svh, expanding circle reveal, left rail growing plant, discrete 5 questions, result screen) -->
+  <div class="verdant-quiz-overlay" role="dialog" aria-modal="true" aria-label="Botanical Skin Diagnostic Quiz" aria-hidden="true">
+    
+    <!-- Top Navigation Row -->
+    <div class="quiz-top-nav">
+      <span class="quiz-brand-wordmark">verdant</span>
+      <span class="quiz-progress-counter">Question 01 / 05</span>
+      <button type="button" class="quiz-close-button" aria-label="Close diagnostic quiz" data-magnetic data-cursor="CLOSE">✕</button>
+    </div>
+
+    <!-- Mobile Horizontal Vine -->
+    <div class="quiz-mobile-vine" aria-hidden="true">
+      <div class="quiz-mobile-vine-fill"></div>
+    </div>
+
+    <!-- Main Stage: Left Rail (Growing Plant) + Right Content Viewport -->
+    <div class="quiz-stage-body">
+      <!-- Left Growing Plant Rail (Desktop) -->
+      <div class="quiz-plant-rail" aria-hidden="true">
+        <svg class="quiz-plant-svg" viewBox="0 0 80 400" fill="none">
+          <!-- Main stem drawing path (400px length) -->
+          <path class="quiz-plant-stem" d="M40 390 C38 310, 42 210, 40 50" />
+          
+          <!-- Node 1 Leaf Pair (y=320) -->
+          <g class="quiz-plant-node-leaf active" transform="translate(40, 320)" style="transform-origin: 40px 320px;">
+            <path d="M0 0 C-14 -6 -20 4 -16 12 C-8 10 -2 6 0 0 Z" fill="#6F8268"/>
+            <path d="M0 0 C14 -6 20 4 16 12 C8 10 2 6 0 0 Z" fill="#A9B79E"/>
+          </g>
+
+          <!-- Node 2 Leaf Pair (y=250) -->
+          <g class="quiz-plant-node-leaf" transform="translate(40, 250)" style="transform-origin: 40px 250px;">
+            <path d="M0 0 C-16 -8 -22 6 -18 14 C-10 12 -3 7 0 0 Z" fill="#A9B79E"/>
+            <path d="M0 0 C16 -8 22 6 18 14 C10 12 3 7 0 0 Z" fill="#6F8268"/>
+          </g>
+
+          <!-- Node 3 Leaf Pair (y=180) -->
+          <g class="quiz-plant-node-leaf" transform="translate(40, 180)" style="transform-origin: 40px 180px;">
+            <path d="M0 0 C-14 -6 -20 4 -16 12 C-8 10 -2 6 0 0 Z" fill="#6F8268"/>
+            <path d="M0 0 C14 -6 20 4 16 12 C8 10 2 6 0 0 Z" fill="#A9B79E"/>
+          </g>
+
+          <!-- Node 4 Leaf Pair (y=110) -->
+          <g class="quiz-plant-node-leaf" transform="translate(40, 110)" style="transform-origin: 40px 110px;">
+            <path d="M0 0 C-16 -8 -22 6 -18 14 C-10 12 -3 7 0 0 Z" fill="#A9B79E"/>
+            <path d="M0 0 C16 -8 22 6 18 14 C10 12 3 7 0 0 Z" fill="#6F8268"/>
+          </g>
+
+          <!-- Terminal Flower Bloom (y=45) -->
+          <g class="quiz-bloom-flower" transform="translate(40, 45)">
+            <ellipse cx="-10" cy="-6" rx="9" ry="6" transform="rotate(-30 -10 -6)" fill="#C98F72"/>
+            <ellipse cx="10" cy="-6" rx="9" ry="6" transform="rotate(30 10 -6)" fill="#C98F72"/>
+            <ellipse cx="0" cy="-12" rx="9" ry="6" fill="#C98F72"/>
+            <circle cx="0" cy="-4" r="5" fill="#EFE9DD"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Right Content Viewport (Questions, Reading Screen, Result) -->
+      <div class="quiz-content-viewport" data-lenis-prevent>
+        <!-- Injected dynamically via quiz.js -->
+      </div>
+
+      <!-- Reading Your Skin Moment -->
+      <div class="quiz-reading-screen" aria-live="polite">
+        <div class="reading-spinner-wrap">
+          <svg class="reading-spinner-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" stroke="#6F8268" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
+            <circle cx="50" cy="6" r="5" fill="#C98F72"/>
+          </svg>
+        </div>
+        <div class="reading-status-text">Reading your answers...</div>
+        <span style="font-size: 0.8rem; color: var(--color-deep-sage); margin-top: 8px;">Click anywhere to skip</span>
+      </div>
+
+      <!-- Result View -->
+      <div class="quiz-result-view"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

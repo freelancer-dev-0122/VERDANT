@@ -1,0 +1,59 @@
+/* /src/styles/loader.css */
+.verdant-loader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  background-color: var(--color-bone);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: all;
+  user-select: none;
+}
+
+.loader-canvas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.loader-sprout-svg {
+  width: 140px;
+  height: 180px;
+  overflow: visible;
+}
+
+.loader-wordmark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2.2rem;
+  color: var(--color-moss);
+  letter-spacing: 0.04em;
+  margin-top: var(--space-3);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Expansion transition overlay */
+.loader-reveal-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-sage);
+  pointer-events: none;
+  z-index: 5;
+  transform: scale(0);
+  will-change: transform;
+}
