@@ -207,10 +207,45 @@ a {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-play-state: paused !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .verdant-loader,
+  .hero-orbit-ring,
+  .hero-scroll-badge svg,
+  .wheel-center-text-badge,
+  .reading-spinner-svg {
+    animation: none !important;
+  }
+}
+
+/* Reusable Floating Toast Notification (matches undo toast) */
+.verdant-toast {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: var(--color-moss);
+  color: var(--color-paper);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(46, 59, 44, 0.25);
+  z-index: 10050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.verdant-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
 }

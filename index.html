@@ -10,17 +10,19 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://verdant-studio.com/">
+  <meta property="og:url" content="https://verdant-kestrel13.vercel.app/">
   <meta property="og:title" content="VERDANT — Slow Botanical Skincare Studio">
   <meta property="og:description" content="Plant-powered rituals, made in small batches. Deep restorative skincare crafted slowly with wild botanicals, cold-pressed extracts, and unhurried studio precision.">
-  <meta property="og:image" content="./og-image.png">
+  <meta property="og:image" content="https://verdant-kestrel13.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://verdant-studio.com/">
+  <meta name="twitter:url" content="https://verdant-kestrel13.vercel.app/">
   <meta name="twitter:title" content="VERDANT — Slow Botanical Skincare Studio">
   <meta name="twitter:description" content="Plant-powered rituals, made in small batches. Deep restorative skincare crafted slowly with wild botanicals, cold-pressed extracts, and unhurried studio precision.">
-  <meta name="twitter:image" content="./og-image.png">
+  <meta name="twitter:image" content="https://verdant-kestrel13.vercel.app/og-image.png">
 
   <!-- JSON-LD Structured Data: Organization & Products -->
   <script type="application/ld+json">
@@ -330,7 +332,19 @@
       </div>
 
       <!-- Stacked Sticky Cards Container -->
-      <div class="shop-deck-wrapper"></div>
+      <div class="shop-deck-wrapper">
+        <noscript>
+          <div class="noscript-shop-fallback" style="padding: 24px; background: rgba(46,59,44,0.06); border-radius: 20px; margin-bottom: 24px;">
+            <p><strong>Verdant Core Collection:</strong></p>
+            <ul style="list-style: disc; margin: 12px 0 0 20px; line-height: 1.8;">
+              <li><strong>Dew Serum (No. 01)</strong> — $48. Deep moisture replenishment with tremella mushroom and olive squalane.</li>
+              <li><strong>Moss Cream (No. 02)</strong> — $42. Rich barrier recovery cream with elderberry wax and soothing moss extract.</li>
+              <li><strong>Clay Cleanser (No. 03)</strong> — $34. Gentle purifying mineral cream cleanser that protects skin balance.</li>
+              <li><strong>Petal Mist (No. 04)</strong> — $28. Hydrating pure rose and botanical blossom water essence.</li>
+            </ul>
+          </div>
+        </noscript>
+      </div>
 
       <!-- Closing Strip Under Deck -->
       <div class="shop-closing-strip">
@@ -512,7 +526,7 @@
               <span class="journal-read-time">4 min read</span>
             </div>
             <h3 class="journal-card-title">Why we stop at twelve ingredients</h3>
-            <p class="journal-card-excerpt">The rigorous discipline of formulation restraint, eliminating synthetic fillers for cellular affinity.</p>
+            <p class="journal-card-excerpt">A quiet formula made only with what your skin actually welcomes and absorbs.</p>
             <span class="journal-read-link">
               Read <span class="journal-arrow-icon">↗</span>
             </span>
@@ -537,7 +551,7 @@
               <span class="journal-read-time">5 min read</span>
             </div>
             <h3 class="journal-card-title">The slow science of aloe</h3>
-            <p class="journal-card-excerpt">Hand-filleted inner leaf gel preserved without heat to retain long-chain acemannan polysaccharides.</p>
+            <p class="journal-card-excerpt">Fresh inner leaf gel gently gathered without heat to keep its soothing moisture alive.</p>
             <span class="journal-read-link">
               Read <span class="journal-arrow-icon">↗</span>
             </span>
@@ -562,7 +576,7 @@
               <span class="journal-read-time">3 min read</span>
             </div>
             <h3 class="journal-card-title">How a refill jar travels</h3>
-            <p class="journal-card-excerpt">Heavy recycled amber glass, monomaterial aluminum lids, and carbon-neutral closed-loop pouch returns.</p>
+            <p class="journal-card-excerpt">Heavy recycled amber glass built to keep, with light refill pouches that travel softly.</p>
             <span class="journal-read-link">
               Read <span class="journal-arrow-icon">↗</span>
             </span>
@@ -586,7 +600,7 @@
               <span class="journal-read-time">6 min read</span>
             </div>
             <h3 class="journal-card-title">Layering without the guesswork</h3>
-            <p class="journal-card-excerpt">Molecular weight progression: water-soluble botanical essences before lipid-rich recovery emulsions.</p>
+            <p class="journal-card-excerpt">A simple rhythm: light flower waters first to hydrate, followed by rich plant creams to seal.</p>
             <span class="journal-read-link">
               Read <span class="journal-arrow-icon">↗</span>
             </span>
@@ -665,7 +679,7 @@
             </div>
           </div>
 
-          <div class="rating-repurchase-badge">100% WOULD REPURCHASE</div>
+          <div class="rating-repurchase-badge">98% WOULD REPURCHASE</div>
         </div>
       </div>
     </section>
@@ -731,11 +745,12 @@
           <span class="footer-col-title">Newsletter</span>
           <p class="footer-newsletter-desc">Seasonal harvest dispatches, formulation notes, and studio rituals.</p>
           <div class="newsletter-form-row">
-            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Your email address">
+            <label for="newsletter-email-input" class="sr-only">Your email address</label>
+            <input type="email" id="newsletter-email-input" class="newsletter-input" placeholder="Your email address" aria-label="Your email address" autocomplete="email">
             <button type="button" class="newsletter-submit-btn" aria-label="Subscribe to newsletter" data-magnetic>→</button>
           </div>
-          <span class="newsletter-error-msg"></span>
-          <div class="newsletter-success-state">
+          <span class="newsletter-error-msg" role="status" aria-live="polite" hidden></span>
+          <div class="newsletter-success-state" role="status" aria-live="polite" hidden>
             <span>Welcome to the garden.</span>
           </div>
         </div>
@@ -817,7 +832,7 @@
   </nav>
 
   <!-- CART DRAWER OVERLAY -->
-  <div class="cart-drawer-overlay" aria-hidden="true">
+  <div class="cart-drawer-overlay" aria-hidden="true" inert>
     <div class="cart-drawer-sage-blob" aria-hidden="true"></div>
     <aside class="cart-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" aria-label="Your ritual" tabindex="-1">
       <div class="cart-header-wrap">
@@ -842,7 +857,7 @@
 
       <div class="cart-body-scroll" data-lenis-prevent>
         <div class="cart-items-container" role="list"></div>
-        <div class="cart-undo-toast" id="cart-undo-toast" role="status" aria-live="polite">
+        <div class="cart-undo-toast" id="cart-undo-toast" role="status" aria-live="polite" hidden>
           <span id="cart-undo-text">Item removed from ritual.</span>
           <button type="button" class="cart-undo-btn" id="cart-undo-btn">Undo</button>
         </div>
@@ -854,7 +869,7 @@
               <input type="text" class="cart-promo-input" id="cart-promo-input" placeholder="ENTER CODE" aria-label="Promo code">
               <button type="button" class="cart-promo-apply-btn" id="cart-promo-apply">Apply</button>
             </div>
-            <span class="cart-promo-error" id="cart-promo-error">Invalid promo code</span>
+            <span class="cart-promo-error" id="cart-promo-error" role="status" aria-live="polite" hidden>Invalid promo code</span>
           </div>
           <div class="cart-promo-chip" id="cart-promo-chip" style="display: none;">
             <span id="cart-promo-chip-text"></span>
@@ -879,14 +894,14 @@
           </div>
           <div class="cart-summary-line">
             <span>Shipping</span>
-            <span id="cart-shipping-val">$6.00</span>
+            <span id="cart-shipping-val">$0.00</span>
           </div>
           <div class="cart-summary-line cart-total-line">
             <span>Total</span>
             <span id="cart-total-val" aria-live="polite">$0.00</span>
           </div>
         </div>
-        <button type="button" class="cart-checkout-btn" id="cart-checkout-btn" data-magnetic data-cursor="OPEN">
+        <button type="button" class="cart-checkout-btn" id="cart-checkout-btn" data-magnetic data-cursor="OPEN" disabled aria-disabled="true">
           <span class="checkout-btn-text">Checkout ↗</span>
           <svg class="checkout-loader-plant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 22v-8M12 14c-3-2-6 0-6-3s4-4 6 0M12 14c3-2 6 0 6-3s-4-4-6 0M12 8c0-3-2-5-2-5s-2 2-2 5"/>
@@ -895,7 +910,7 @@
       </div>
 
       <!-- Success Screen -->
-      <div class="cart-success-view" id="cart-success-view">
+      <div class="cart-success-view" id="cart-success-view" role="status" aria-live="polite" hidden>
         <div class="cart-success-bloom">
           <svg viewBox="0 0 80 80" fill="none">
             <circle cx="40" cy="40" r="36" fill="#A9B79E" opacity="0.3"/>
@@ -915,7 +930,7 @@
   </div>
 
   <!-- JOURNAL READING OVERLAY -->
-  <div class="journal-reading-overlay" id="journal-reading-overlay" role="dialog" aria-modal="true" aria-label="Journal Article" aria-hidden="true">
+  <div class="journal-reading-overlay" id="journal-reading-overlay" role="dialog" aria-modal="true" aria-labelledby="journal-overlay-title" aria-label="Journal Article" aria-hidden="true" inert>
     <div class="journal-overlay-nav">
       <span class="journal-overlay-brand">verdant</span>
       <button type="button" class="journal-overlay-close-btn" aria-label="Close article" data-cursor="CLOSE" data-magnetic>✕</button>
@@ -923,20 +938,20 @@
     <div class="journal-article-scroll" data-lenis-prevent>
       <div class="journal-article-content">
         <span class="journal-article-category"></span>
-        <h2 class="journal-article-title"></h2>
+        <h2 class="journal-article-title" id="journal-overlay-title"></h2>
         <span class="journal-article-meta"></span>
         <div class="journal-article-body"></div>
       </div>
     </div>
   </div>
 
-  <!-- FULLSCREEN QUIZ OVERLAY (100svh, expanding circle reveal, left rail growing plant, discrete 5 questions, result screen) -->
-  <div class="verdant-quiz-overlay" role="dialog" aria-modal="true" aria-label="Botanical Skin Diagnostic Quiz" aria-hidden="true">
+  <!-- FULLSCREEN QUIZ OVERLAY (100dvh, expanding circle reveal, left rail growing plant, discrete 5 questions, result screen) -->
+  <div class="verdant-quiz-overlay" role="dialog" aria-modal="true" aria-labelledby="quiz-progress-counter" aria-label="Botanical Skin Diagnostic Quiz" aria-hidden="true" inert>
     
     <!-- Top Navigation Row -->
     <div class="quiz-top-nav">
       <span class="quiz-brand-wordmark">verdant</span>
-      <span class="quiz-progress-counter">Question 01 / 05</span>
+      <span class="quiz-progress-counter" id="quiz-progress-counter">Question 01 / 05</span>
       <button type="button" class="quiz-close-button" aria-label="Close diagnostic quiz" data-magnetic data-cursor="CLOSE">✕</button>
     </div>
 
@@ -1001,13 +1016,16 @@
           </svg>
         </div>
         <div class="reading-status-text">Reading your answers...</div>
-        <span style="font-size: 0.8rem; color: var(--color-deep-sage); margin-top: 8px;">Click anywhere to skip</span>
+        <button type="button" class="quiz-reading-skip-btn" style="font-size: 0.8rem; color: var(--color-deep-sage); margin-top: 8px; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 6px 12px;">Skip</button>
       </div>
 
       <!-- Result View -->
       <div class="quiz-result-view"></div>
     </div>
   </div>
+
+  <!-- Floating Toast Notification -->
+  <div class="verdant-toast" id="verdant-demo-toast" role="status" aria-live="polite" hidden></div>
 
   <script type="module" src="./src/main.js"></script>
 </body>

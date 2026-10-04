@@ -24,12 +24,15 @@ export function calculatePricing(items = [], promoCode = null) {
     promoDiscount = parseFloat((subtotal * 0.10).toFixed(2));
   }
 
-  // Shipping threshold: $60 (or free if WELCOME code applied or subtotal >= 60)
-  const isFreeShipping = subtotal >= 60 || normalizedCode === 'WELCOME' || subtotal === 0;
-  const shipping = (subtotal > 0 && !isFreeShipping) ? 6 : 0;
-  const freeShippingRemaining = Math.max(0, parseFloat((60 - subtotal).toFixed(2)));
+  // Discounted subtotal
+  const discountedSubtotal = Math.max(0, parseFloat((subtotal - bundleDiscount - promoDiscount).toFixed(2)));
 
-  const total = parseFloat(Math.max(0, subtotal - bundleDiscount - promoDiscount + shipping).toFixed(2));
+  // Shipping threshold: $60 (or free if WELCOME code applied or discountedSubtotal >= 60)
+  const isFreeShipping = discountedSubtotal >= 60 || normalizedCode === 'WELCOME' || subtotal === 0;
+  const shipping = (subtotal > 0 && !isFreeShipping) ? 6 : 0;
+  const freeShippingRemaining = Math.max(0, parseFloat((60 - discountedSubtotal).toFixed(2)));
+
+  const total = parseFloat(Math.max(0, discountedSubtotal + shipping).toFixed(2));
 
   return {
     subtotal: parseFloat(subtotal.toFixed(2)),

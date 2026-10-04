@@ -16,6 +16,26 @@ export function runLoader() {
       return;
     }
 
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      loaderEl.style.display = 'none';
+      const heroEl = document.getElementById('hero');
+      if (heroEl) {
+        heroEl.classList.remove('hero-hidden');
+        heroEl.style.opacity = '1';
+        heroEl.style.visibility = 'visible';
+      }
+      const dockWrap = document.querySelector('.verdant-dock-wrap');
+      if (dockWrap) {
+        dockWrap.style.transform = 'translateX(-50%) translateY(0)';
+        dockWrap.style.opacity = '1';
+      }
+      setTone('sage', true);
+      startScroll();
+      resolve();
+      return;
+    }
+
     const seed = loaderEl.querySelector('.loader-seed');
     const stem = loaderEl.querySelector('.loader-stem');
     const leafLeft = loaderEl.querySelector('.loader-leaf-left');

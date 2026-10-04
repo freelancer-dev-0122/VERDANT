@@ -328,11 +328,13 @@ export function setupTestimonials(sectionEl) {
     isPaused = false;
   }
 
-  // Pause on hover & focus
+  // Pause on hover, focus & touch
   stage.addEventListener('mouseenter', pauseAuto);
   stage.addEventListener('mouseleave', resumeAuto);
   stage.addEventListener('focusin', pauseAuto);
   stage.addEventListener('focusout', resumeAuto);
+  stage.addEventListener('touchstart', pauseAuto, { passive: true });
+  stage.addEventListener('touchend', resumeAuto, { passive: true });
 
   // ScrollTrigger to start/pause when visible
   ScrollTrigger.create({

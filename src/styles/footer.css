@@ -6,7 +6,7 @@
   width: 100%;
   background-color: var(--color-moss);
   color: var(--color-paper);
-  padding: 140px var(--space-4) 40px var(--space-4);
+  padding: 140px var(--space-4) calc(100px + env(safe-area-inset-bottom, 0px)) var(--space-4);
   box-sizing: border-box;
   overflow: hidden;
   transition: background-color 0.9s cubic-bezier(0.45, 0, 0.55, 1);
@@ -207,6 +207,12 @@
   border: 1px solid rgba(247, 243, 234, 0.2);
   border-radius: var(--radius-pill);
   padding: 4px 6px 4px 14px;
+  transition: border-color 0.25s ease;
+}
+
+.newsletter-form-row.has-error {
+  border-color: var(--color-clay);
+  box-shadow: 0 0 0 1px var(--color-clay);
 }
 
 .newsletter-input {
@@ -214,7 +220,7 @@
   background: none;
   border: none;
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--color-paper);
   outline: none;
 }
@@ -224,8 +230,8 @@
 }
 
 .newsletter-submit-btn {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: var(--color-paper);
   color: var(--color-moss);

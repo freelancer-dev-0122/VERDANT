@@ -47,6 +47,7 @@ export function setupQuiz() {
     scrollLock.lock('quiz', state.triggerElement);
 
     overlay.classList.add('is-active');
+    overlay.removeAttribute('inert');
 
     // Trigger circular clip-path expansion from source position
     const origin = getClipOrigin(sourceEl);
@@ -83,6 +84,7 @@ export function setupQuiz() {
     const onFinish = () => {
       overlay.classList.remove('is-active');
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('inert', '');
       scrollLock.unlock('quiz'); // Guaranteed unlock via manager
     };
 
@@ -123,6 +125,22 @@ export function setupQuiz() {
       e.preventDefault();
       closeQuiz();
       return;
+    }
+
+    // Focus trap inside quiz overlay
+    if (e.key === 'Tab') {
+      const focusable = overlay.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), [tabindex="0"]');
+      if (focusable.length > 0) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
 
     // Question keyboard shortcuts (1-4 select, Backspace goes back)
@@ -369,11 +387,24 @@ export function setupQuiz() {
       showResultScreen(true);
     }, 1600);
 
-    // Skippable on click
-    readingScreen.onclick = () => {
+    const skipBtn = readingScreen.querySelector('.quiz-reading-skip-btn');
+    const triggerSkip = () => {
       clearInterval(interval);
       clearTimeout(finishTimeout);
       showResultScreen(true);
+    };
+
+    if (skipBtn) {
+      skipBtn.onclick = (e) => {
+        e.stopPropagation();
+        triggerSkip();
+      };
+      setTimeout(() => skipBtn.focus(), 50);
+    }
+
+    // Skippable on click
+    readingScreen.onclick = () => {
+      triggerSkip();
     };
   }
 

@@ -76,6 +76,7 @@ export function setupCart() {
 
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
+    overlay.removeAttribute('inert');
     scrollLock.lock('cart', lastTriggerEl);
 
     render();
@@ -106,8 +107,12 @@ export function setupCart() {
       }
     }
 
-    // Trap focus inside drawer
-    panel.focus();
+    // Move focus inside drawer
+    if (closeBtn) {
+      closeBtn.focus();
+    } else {
+      panel.focus();
+    }
   }
 
   function closeCart() {
@@ -121,6 +126,7 @@ export function setupCart() {
     if (prefersReduced) {
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('inert', '');
       gsap.set(panel, { xPercent: 100 });
       if (lastTriggerEl && typeof lastTriggerEl.focus === 'function') {
         lastTriggerEl.focus();
@@ -133,6 +139,7 @@ export function setupCart() {
         onComplete: () => {
           overlay.classList.remove('open');
           overlay.setAttribute('aria-hidden', 'true');
+          overlay.setAttribute('inert', '');
           if (lastTriggerEl && typeof lastTriggerEl.focus === 'function') {
             lastTriggerEl.focus();
           }
@@ -147,6 +154,7 @@ export function setupCart() {
     if (successView && successView.classList.contains('visible')) {
       setTimeout(() => {
         successView.classList.remove('visible');
+        successView.hidden = true;
         const scrollBody = overlay.querySelector('.cart-body-scroll');
         const footerWrap = overlay.querySelector('.cart-footer-wrap');
         if (scrollBody) scrollBody.style.display = '';
@@ -310,7 +318,10 @@ export function setupCart() {
 
     if (code === 'VERDANT10' || code === 'WELCOME') {
       activePromoCode = code;
-      if (promoError) promoError.classList.remove('visible');
+      if (promoError) {
+        promoError.classList.remove('visible');
+        promoError.hidden = true;
+      }
       if (promoForm) promoForm.classList.remove('expanded');
       if (promoToggle) promoToggle.style.display = 'none';
       if (promoChip) {
@@ -324,6 +335,7 @@ export function setupCart() {
     } else {
       if (promoError) {
         promoError.textContent = 'Invalid promo code. Try VERDANT10 or WELCOME';
+        promoError.hidden = false;
         promoError.classList.add('visible');
       }
     }
@@ -340,7 +352,10 @@ export function setupCart() {
         }
         announce(`Restored ${undoItem.product.name} to ritual`);
         undoItem = null;
-        if (undoToast) undoToast.classList.remove('visible');
+        if (undoToast) {
+          undoToast.classList.remove('visible');
+          undoToast.hidden = true;
+        }
         clearTimeout(undoTimer);
       }
     });
@@ -352,10 +367,12 @@ export function setupCart() {
       undoText.textContent = `Removed ${item.product.name} from ritual.`;
     }
     if (undoToast) {
+      undoToast.hidden = false;
       undoToast.classList.add('visible');
       clearTimeout(undoTimer);
       undoTimer = setTimeout(() => {
         undoToast.classList.remove('visible');
+        undoToast.hidden = true;
         undoItem = null;
       }, 5000);
     }
@@ -374,7 +391,7 @@ export function setupCart() {
 
     // 2. Free Shipping Bar
     if (shippingText && shippingFill) {
-      if (pricing.hasFreeShipping || pricing.freeShippingRemaining <= 0) {
+      if (count > 0 && (pricing.hasFreeShipping || pricing.freeShippingRemaining <= 0)) {
         shippingText.textContent = 'Free shipping unlocked ✓';
         shippingText.classList.add('unlocked');
         if (!prefersReduced) {
@@ -391,7 +408,8 @@ export function setupCart() {
         hadFreeShipping = false;
         shippingText.textContent = `You're $${pricing.freeShippingRemaining.toFixed(2)} away from free shipping`;
         shippingText.classList.remove('unlocked');
-        const pct = Math.min(100, Math.max(0, (pricing.subtotal / 60) * 100));
+        const discountedSubtotal = Math.max(0, pricing.subtotal - pricing.bundleDiscount - pricing.promoDiscount);
+        const pct = count > 0 ? Math.min(100, Math.max(0, (discountedSubtotal / 60) * 100)) : 0;
         if (!prefersReduced) {
           gsap.to(shippingFill, { width: `${pct}%`, duration: 0.55, ease: 'power3.out' });
         } else {
@@ -440,10 +458,12 @@ export function setupCart() {
 
       if (checkoutBtn) {
         checkoutBtn.disabled = true;
+        checkoutBtn.setAttribute('aria-disabled', 'true');
       }
     } else {
       if (checkoutBtn) {
         checkoutBtn.disabled = false;
+        checkoutBtn.removeAttribute('aria-disabled');
       }
 
       itemsContainer.innerHTML = items.map((item) => {
@@ -536,7 +556,11 @@ export function setupCart() {
     }
 
     if (shippingVal) {
-      shippingVal.textContent = pricing.shipping === 0 ? 'FREE' : `$${pricing.shipping.toFixed(2)}`;
+      if (items.length === 0) {
+        shippingVal.textContent = '$0.00';
+      } else {
+        shippingVal.textContent = pricing.shipping === 0 ? 'FREE' : `$${pricing.shipping.toFixed(2)}`;
+      }
     }
 
     if (totalVal) {
@@ -610,14 +634,17 @@ export function setupCart() {
         checkoutBtn.classList.remove('is-loading');
         checkoutBtn.disabled = false;
 
-        // Generate fake order number VD-2610-XXXX
+        // Generate order number VD-YYMM-XXXX
+        const now = new Date();
+        const yy = String(now.getFullYear()).slice(-2);
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         let randomCode = '';
         for (let i = 0; i < 4; i++) {
           randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
         }
         if (orderBadge) {
-          orderBadge.textContent = `VD-2610-${randomCode}`;
+          orderBadge.textContent = `VD-${yy}${mm}-${randomCode}`;
         }
 
         // Clone current summary into success view
@@ -653,7 +680,10 @@ export function setupCart() {
         const footerWrap = overlay.querySelector('.cart-footer-wrap');
         if (scrollBody) scrollBody.style.display = 'none';
         if (footerWrap) footerWrap.style.display = 'none';
-        if (successView) successView.classList.add('visible');
+        if (successView) {
+          successView.hidden = false;
+          successView.classList.add('visible');
+        }
 
         announce('Checkout completed. Thank you, your ritual is on its way.');
       }, 1400);

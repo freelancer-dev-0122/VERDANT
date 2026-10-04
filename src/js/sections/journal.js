@@ -10,7 +10,7 @@ export const journalArticles = [
   {
     id: 'twelve-ingredients',
     title: 'Why we stop at twelve ingredients',
-    excerpt: 'The rigorous discipline of formulation restraint, eliminating synthetic fillers for cellular affinity.',
+    excerpt: 'A quiet formula made only with what your skin actually welcomes and absorbs.',
     category: 'INGREDIENTS',
     readTime: '4 min read',
     tone: 'sage',
@@ -26,7 +26,7 @@ export const journalArticles = [
   {
     id: 'slow-science-aloe',
     title: 'The slow science of aloe',
-    excerpt: 'Hand-filleted inner leaf gel preserved without heat to retain long-chain acemannan polysaccharides.',
+    excerpt: 'Fresh inner leaf gel gently gathered without heat to keep its soothing moisture alive.',
     category: 'RITUAL',
     readTime: '5 min read',
     tone: 'deep-sage',
@@ -42,7 +42,7 @@ export const journalArticles = [
   {
     id: 'refill-jar-travels',
     title: 'How a refill jar travels',
-    excerpt: 'Heavy recycled amber glass, monomaterial aluminum lids, and carbon-neutral closed-loop pouch returns.',
+    excerpt: 'Heavy recycled amber glass built to keep, with light refill pouches that travel softly.',
     category: 'SUSTAINABILITY',
     readTime: '3 min read',
     tone: 'clay',
@@ -58,7 +58,7 @@ export const journalArticles = [
   {
     id: 'layering-without-guesswork',
     title: 'Layering without the guesswork',
-    excerpt: 'Molecular weight progression: water-soluble botanical essences before lipid-rich recovery emulsions.',
+    excerpt: 'A simple rhythm: light flower waters first to hydrate, followed by rich plant creams to seal.',
     category: 'SKIN',
     readTime: '6 min read',
     tone: 'bone',
@@ -124,6 +124,7 @@ export function setupJournal(sectionEl) {
 
     overlay.classList.add('is-active');
     overlay.setAttribute('aria-hidden', 'false');
+    overlay.removeAttribute('inert');
     scrollLock.lock('journal', lastTriggerEl);
 
     if (prefersReduced) {
@@ -143,19 +144,24 @@ export function setupJournal(sectionEl) {
 
     scrollLock.unlock('journal');
 
-    if (prefersReduced) {
+    const handleClosed = () => {
       overlay.classList.remove('is-active');
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('inert', '');
+      if (lastTriggerEl && typeof lastTriggerEl.focus === 'function') {
+        lastTriggerEl.focus();
+      }
+    };
+
+    if (prefersReduced) {
+      handleClosed();
       gsap.set(overlay, { opacity: 0 });
     } else {
       gsap.to(overlay, {
         opacity: 0,
         duration: 0.35,
         ease: 'power2.in',
-        onComplete: () => {
-          overlay.classList.remove('is-active');
-          overlay.setAttribute('aria-hidden', 'true');
-        }
+        onComplete: handleClosed
       });
     }
   }
@@ -186,10 +192,28 @@ export function setupJournal(sectionEl) {
     overlayCloseBtn.addEventListener('click', closeArticle);
   }
 
-  // Close on Escape or click outside
+  // Close on Escape & Tab focus trap
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay?.classList.contains('is-active')) {
+    if (!overlay?.classList.contains('is-active')) return;
+
+    if (e.key === 'Escape') {
       closeArticle();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = overlay.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), [tabindex="0"]');
+      if (focusable.length > 0) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
   });
 

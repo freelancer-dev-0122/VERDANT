@@ -123,14 +123,21 @@ export function setupRitual(section) {
 
   // Toggle Morning / Evening
   toggleBtns.forEach((btn) => {
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
     btn.addEventListener('click', () => {
       const mode = btn.dataset.mode;
       if (mode === state.mode) return;
       state.mode = mode;
 
       // Update toggle indicator
-      toggleBtns.forEach(b => b.classList.remove('active'));
+      toggleBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      btn.setAttribute('aria-pressed', 'true');
       if (toggleIndicator) {
         toggleIndicator.style.transform = mode === 'pm' ? 'translateX(100%)' : 'translateX(0%)';
       }
@@ -169,6 +176,9 @@ export function setupRitual(section) {
 
     if (customBadge) {
       customBadge.classList.add('visible');
+    }
+    if (startQuizBtn) {
+      startQuizBtn.style.display = 'none';
     }
 
     // Flip reveal into personalized ritual

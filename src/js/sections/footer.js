@@ -173,10 +173,46 @@ export function setupFooter(footerEl) {
     });
   }
 
-  // 6. Navigation anchors with Lenis smooth scroll
+  // 6. Navigation anchors with Lenis smooth scroll and demo toast for Help links
+  const toastEl = document.getElementById('verdant-demo-toast');
+  let toastTimer = null;
+
+  function showDemoToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    toastEl.classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toastEl.classList.remove('visible');
+      setTimeout(() => {
+        toastEl.hidden = true;
+      }, 300);
+    }, 2800);
+  }
+
+  // Allow other modules to show toasts
+  window.addEventListener('verdant:toast', (e) => {
+    if (e.detail?.message) showDemoToast(e.detail.message);
+  });
+
+  const demoHelpTitles = [
+    'Shipping & Delivery',
+    'Recycling Program',
+    'Studio Contact',
+    'Botanical FAQ'
+  ];
+
   const navLinks = footerEl.querySelectorAll('.footer-nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+      const linkText = link.textContent.trim();
+      if (demoHelpTitles.includes(linkText)) {
+        e.preventDefault();
+        showDemoToast('Demo — page not available');
+        return;
+      }
+
       const href = link.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
@@ -195,16 +231,25 @@ export function setupFooter(footerEl) {
     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (!isValid) {
+      if (newsForm) newsForm.classList.add('has-error');
       if (newsError) {
         newsError.textContent = 'Please enter a valid botanical correspondence address.';
+        newsError.hidden = false;
         newsError.classList.add('visible');
       }
       return;
     }
 
-    if (newsError) newsError.classList.remove('visible');
+    if (newsForm) newsForm.classList.remove('has-error');
+    if (newsError) {
+      newsError.classList.remove('visible');
+      newsError.hidden = true;
+    }
     if (newsForm) newsForm.style.display = 'none';
-    if (newsSuccess) newsSuccess.classList.add('visible');
+    if (newsSuccess) {
+      newsSuccess.hidden = false;
+      newsSuccess.classList.add('visible');
+    }
   }
 
   if (newsSubmit) {

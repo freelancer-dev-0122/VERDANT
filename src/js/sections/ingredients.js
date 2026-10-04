@@ -571,6 +571,7 @@ export function setupIngredients(section) {
   // CONCERN FILTERS (HYDRATION / CALM / GLOW / BARRIER)
   // -------------------------------------------------------------
   filterPills.forEach((pill) => {
+    pill.setAttribute('aria-pressed', 'false');
     pill.addEventListener('click', () => {
       userInteracted();
       const concern = pill.dataset.concern;
@@ -578,9 +579,11 @@ export function setupIngredients(section) {
       if (state.filters.has(concern)) {
         state.filters.delete(concern);
         pill.classList.remove('active');
+        pill.setAttribute('aria-pressed', 'false');
       } else {
         state.filters.add(concern);
         pill.classList.add('active');
+        pill.setAttribute('aria-pressed', 'true');
       }
 
       applyFilters();
@@ -591,7 +594,10 @@ export function setupIngredients(section) {
     clearFilterBtn.addEventListener('click', () => {
       userInteracted();
       state.filters.clear();
-      filterPills.forEach(p => p.classList.remove('active'));
+      filterPills.forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-pressed', 'false');
+      });
       applyFilters();
     });
   }
